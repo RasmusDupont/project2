@@ -17,18 +17,16 @@ namespace Project2.Controllers
             this.dataService = dataService;
         }
 
-        // GET api/values
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{id}")]
+        public IActionResult GetQuestionWithAnswersByPostId(int id)
         {
-            return Ok(dataService.PostRepository.GetPostRelationsByPostId(9));
+            return Ok(dataService.PostRepository.GetQuestionWithAnswersByPostId(id));
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("/mark/{id}")]
+        public IActionResult Mark(int id)
         {
-            return "value";
+            return Ok("Ok");
         }
 
         // POST api/values
@@ -37,11 +35,6 @@ namespace Project2.Controllers
         {
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]

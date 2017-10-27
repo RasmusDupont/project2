@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Entities;
 using WebAPI.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Repositories
 {
@@ -16,15 +17,24 @@ namespace WebAPI.Repositories
             this.db = db;
         }
 
-        public Post GetPostRelationsByPostId(int id)
+        public Post GetQuestionWithAnswersByPostId(int id)
         {
-            Post post = db.Post.FirstOrDefault();
+            Post post = db.Post.Single(x => x.Id == id);
+                //.Where(x => x.Id == id)
+                //.Include(p => p.)
+                //.FirstOrDefault();
             return post;
         }
 
-        public void MarkPost(int id)
+        public bool MarkPost(int id)
         {
-            throw new NotImplementedException();
+            Post post = db.Post.Single(x => x.Id == id);
+            if (post != null)
+            {
+                post.MarkedPost = !post.MarkedPost;
+                return true;
+            }
+            return false;
         }
 
         public void GetAnnotation(int id)
