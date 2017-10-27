@@ -19,7 +19,6 @@ namespace WebAPI.Repositories
         public Post GetPostRelationsByPostId(int id)
         {
             Post post = db.Post.FirstOrDefault();
-
             return post;
         }
 
@@ -39,3 +38,4 @@ namespace WebAPI.Repositories
         }
     }
 }
+
