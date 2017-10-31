@@ -19,5 +19,10 @@ namespace WebAPI
                 return this.postRepository ?? new PostRepository(context);
             }
         }
+
+        public void Save()
+        {
+            context.SaveChanges();
+        }
     }
 }

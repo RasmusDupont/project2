@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
 namespace WebAPI.Entities
 {
@@ -28,7 +30,7 @@ namespace WebAPI.Entities
         public string Annotation { get; set; }
         [Column("view_count")]
         public int ViewCount { get; set; }
-        public List<Post> answers { get; set; }
-        public List<Comment> comments { get; set; }
+        //public List<Post> answers { get; set; }
+        //public List<Comment> comments { get; set; }
     }
 }

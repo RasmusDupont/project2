@@ -19,11 +19,13 @@ namespace WebAPI.Controllers
             return Ok(dataService.PostRepository.GetQuestionWithAnswersByPostId(id));
         }
 
-        // TODO implementer
-        [HttpPut("{id}")]
+        // TODO test
+        [HttpPut("mark/{id}")]
         public IActionResult MarkPost(int id)
         {
-            return Ok("Ok");
+            bool result = dataService.PostRepository.MarkPost(id);
+            dataService.Save();
+            return Ok(result);
         }
 
         // TODO implementer
