@@ -17,12 +17,13 @@ namespace WebAPI.Repositories
             this.db = db;
         }
 
+        //TODO fix
         public Post GetQuestionWithAnswersByPostId(int id)
         {
-            Post post = db.Post.Single(x => x.Id == id);
-                //.Where(x => x.Id == id)
-                //.Include(p => p.)
-                //.FirstOrDefault();
+            Post post = db.Post
+                .Where(x => x.Id == id)
+                .Include(p => p.Comments)
+                .FirstOrDefault();
             return post;
         }
 

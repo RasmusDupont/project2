@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
             this.dataService = dataService;
         }
 
-        // TODO implement
+        // TODO call procedure
         [HttpGet("{id}")]
         public IActionResult GetQuestionWithAnswersByPostId(int id)
         {
@@ -33,7 +33,6 @@ namespace WebAPI.Controllers
             return Ok(dataService.PostRepository.GetAnnotation(id));
         }
 
-        // TODO implementer
         [HttpPut("annotation/{id}")]
         public IActionResult UpdateAnnotation(int id, [FromBody] string annotation)
         {
