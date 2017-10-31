@@ -14,6 +14,7 @@ namespace Project2
     {
         public static void Main(string[] args)
         {
+
             BuildWebHost(args).Run();
         }
 

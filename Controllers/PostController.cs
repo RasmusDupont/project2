@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebAPI;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Project2.Controllers
+namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     public class PostController : Controller
@@ -23,21 +18,19 @@ namespace Project2.Controllers
             return Ok(dataService.PostRepository.GetQuestionWithAnswersByPostId(id));
         }
 
-        [HttpPost("/mark/{id}")]
+        [HttpPut("{id}")]
         public IActionResult Mark(int id)
         {
             return Ok("Ok");
         }
 
-        // POST api/values
         [HttpPost]
         public void Post([FromBody]string value)
         {
         }
 
-
-        // DELETE api/values/5
         [HttpDelete("{id}")]
+        [ActionName("delete")]
         public void Delete(int id)
         {
         }

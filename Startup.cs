@@ -36,10 +36,7 @@ namespace Project2
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute("markPost", "api/{controller=Post}/{action=Mark}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }
