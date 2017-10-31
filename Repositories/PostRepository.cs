@@ -34,17 +34,29 @@ namespace WebAPI.Repositories
                 post.MarkedPost = !post.MarkedPost;
                 return true;
             }
+            return false; 
+        }
+
+        public string GetAnnotation(int id)
+        {
+            Post post = db.Post.Single(x => x.Id == id);
+            if (post != null)
+            {
+                string annotation = post.Annotation;
+                return annotation;
+            }
+            return "No annotation for this post.";
+        }
+
+        public bool UpdateAnnotation(int id, string annotation)
+        {
+            Post post = db.Post.Single(x => x.Id == id);
+            if (post != null)
+            {
+                post.Annotation = annotation;
+                return true;
+            }
             return false;
-        }
-
-        public void GetAnnotation(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateAnnotation(string annotation)
-        {
-            throw new NotImplementedException();
         }
 
         

@@ -10,7 +10,7 @@ namespace WebAPI.Interfaces
     {
         Post GetQuestionWithAnswersByPostId(int id);
         bool MarkPost(int id);
-        void GetAnnotation(int id);
-        void UpdateAnnotation(string annotation);
+        string GetAnnotation(int id);
+        bool UpdateAnnotation(int id, string annotation);
     }
 }

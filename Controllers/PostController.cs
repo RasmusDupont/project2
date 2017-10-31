@@ -12,14 +12,13 @@ namespace WebAPI.Controllers
             this.dataService = dataService;
         }
 
-        // TODO test
+        // TODO implement
         [HttpGet("{id}")]
         public IActionResult GetQuestionWithAnswersByPostId(int id)
         {
             return Ok(dataService.PostRepository.GetQuestionWithAnswersByPostId(id));
         }
 
-        // TODO test
         [HttpPut("mark/{id}")]
         public IActionResult MarkPost(int id)
         {
@@ -28,18 +27,19 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        // TODO implementer
         [HttpGet("annotation/{id}")]
         public IActionResult GetAnnotation(int id)
         {
-            return Ok("Ok");
+            return Ok(dataService.PostRepository.GetAnnotation(id));
         }
 
         // TODO implementer
         [HttpPut("annotation/{id}")]
-        public IActionResult UpdateAnnotation(int id)
+        public IActionResult UpdateAnnotation(int id, [FromBody] string annotation)
         {
-            return Ok("Ok");
+            bool result = dataService.PostRepository.UpdateAnnotation(id, annotation);
+            dataService.Save();
+            return Ok(result);
         }
     }
 }
