@@ -11,6 +11,5 @@ namespace WebAPI.Interfaces
     {
         List<Post> GetMostViewedPosts();
         List<Tag> GetMostUsedTags();
-        List<Tag> GetTagPopularityByYear();
     }
 }
