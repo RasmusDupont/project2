@@ -12,24 +12,28 @@ namespace WebAPI.Controllers
             this.dataService = dataService;
         }
 
+        // TODO test
         [HttpGet("{id}")]
         public IActionResult GetQuestionWithAnswersByPostId(int id)
         {
             return Ok(dataService.PostRepository.GetQuestionWithAnswersByPostId(id));
         }
 
+        // TODO implementer
         [HttpPut("{id}")]
         public IActionResult MarkPost(int id)
         {
             return Ok("Ok");
         }
 
+        // TODO implementer
         [HttpGet("annotation/{id}")]
         public IActionResult GetAnnotation(int id)
         {
             return Ok("Ok");
         }
 
+        // TODO implementer
         [HttpPut("annotation/{id}")]
         public IActionResult UpdateAnnotation(int id)
         {
