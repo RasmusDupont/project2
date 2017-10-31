@@ -11,6 +11,7 @@ namespace WebAPI
     {
         private SovaContext context = new SovaContext();
         private PostRepository postRepository;
+        private SearchRepository searchRepository;
 
         public PostRepository PostRepository
         {
@@ -18,6 +19,11 @@ namespace WebAPI
             {
                 return this.postRepository ?? new PostRepository(context);
             }
+        }
+
+        public SearchRepository SearchRepository
+        {
+            get { return this.searchRepository ?? new SearchRepository(context); }
         }
 
         public void Save()

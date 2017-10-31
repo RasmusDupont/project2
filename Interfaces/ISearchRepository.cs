@@ -10,7 +10,7 @@ namespace WebAPI.Interfaces
     interface ISearchRepository
     {
         List<Post> GetPostsBySearchString(string searchString);
-        void SaveSearch(SearchDTO search);
+        bool SaveSearch(string searchString);
         List<Search> GetSearchHistory();
 
     }
