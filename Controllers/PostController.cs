@@ -19,20 +19,21 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Mark(int id)
+        public IActionResult MarkPost(int id)
         {
             return Ok("Ok");
         }
 
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpGet("annotation/{id}")]
+        public IActionResult GetAnnotation(int id)
         {
+            return Ok("Ok");
         }
 
-        [HttpDelete("{id}")]
-        [ActionName("delete")]
-        public void Delete(int id)
+        [HttpPut("annotation/{id}")]
+        public IActionResult UpdateAnnotation(int id)
         {
+            return Ok("Ok");
         }
     }
 }
