@@ -20,7 +20,6 @@ namespace WebAPI.Controllers
         public IActionResult SaveSearch([FromBody] string searchString)
         {
             bool result = dataService.SearchRepository.SaveSearch(searchString);
-            dataService.Save();
             return Ok(result);
         }
     }

@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{4B59EE9A-B742-4AB1-A683-9C12C4963736}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/Controllers/SearchController.cs">
+    <Files>
+      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="1" Column="1" />
+      <File FileName="WebAPI/Repositories/SearchRepository.cs" Line="26" Column="9" />
+      <File FileName="WebAPI/Controllers/SearchController.cs" Line="22" Column="81" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.WebAPI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

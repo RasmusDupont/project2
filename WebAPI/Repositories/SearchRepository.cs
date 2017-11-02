@@ -24,7 +24,6 @@ namespace WebAPI.Repositories
             throw new NotImplementedException();
         }
 
-        //TODO virker ikke
         public bool SaveSearch(string searchString)
         {
             try
@@ -32,8 +31,7 @@ namespace WebAPI.Repositories
                 //db.Search.FromSql("call saveSearch(" + searchString + ")");
                 //db.SqlQuery<Search>("saveSearch",searchString);
 
-                SqlParameter param1 = new SqlParameter("@search_string", searchString);
-                db.Database.ExecuteSqlCommand("saveSearch @search_string", param1);
+                db.Database.ExecuteSqlCommand("call saveSearch({0})", searchString);
                 return true;
             }
             catch
