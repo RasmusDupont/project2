@@ -47,16 +47,8 @@ namespace WebAPI.Controllers
         [HttpGet("search/{substring}")]
         public IActionResult GetPostsBySearchString(string substring)
         {
-            //try
-            //{
-                List<Post> result = dataService.PostRepository.GetPostsBySearchString(substring);
-                return Ok(result);
-            //}
-            //catch
-            //{
-            //    return BadRequest();
-            //}
-            
+            List<Post> result = dataService.PostRepository.GetPostsBySearchString(substring);
+            return Ok(result);   
         }
     }
 }

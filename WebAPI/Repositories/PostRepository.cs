@@ -20,13 +20,22 @@ namespace WebAPI.Repositories
             this.db = db;
         }
 
-        //TODO fix
         public Post GetQuestionWithAnswersByPostId(int id)
         {
-            Post post = db.Post.Single(x => x.Id == id);
-            //.Where(x => x.Id == id)
-            //.Include(p => p.Comments)
-            //.FirstOrDefault();
+            Post post = db.Post.FromSql("call getPost({0})", id).FirstOrDefault();
+
+            if (post.ParentId != null)
+            {
+                post = db.Post.FromSql("call getPost({0})", post.ParentId).FirstOrDefault();
+            }
+            List<Post> posts = db.Post.FromSql("call getAnswers({0})", post.Id).ToList();
+            posts.Prepend(post);
+
+            foreach (var p in posts)
+            {
+                p.Comments = db.Comment.FromSql("call getComments({0})", p.Id).ToList();
+            }
+
             return post;
         }
 

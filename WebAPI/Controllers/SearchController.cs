@@ -30,8 +30,5 @@ namespace WebAPI.Controllers
             List<Search> searchHistory = dataService.SearchRepository.GetSearchHistory();
             return Ok(searchHistory);
         }
-
     }
-    
-
 }

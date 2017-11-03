@@ -22,16 +22,14 @@ namespace WebAPI.Entities
         public string Body { get; set; }
         public string Title { get; set; }
         [Column("fk_user_id")]
-        public int User { get; set; }
+        public int UserId { get; set; }
         [Column("fk_posttype_id")]
-        public int Type { get; set; }
+        public int PostTypeId { get; set; }
         [Column("marked_post")]
         public bool MarkedPost { get; set; }
         public string Annotation { get; set; }
         [Column("view_count")]
         public int ViewCount { get; set; }
-        //public List<Comment> Comments { get; set; }
-        //public List<Post> answers { get; set; }
-        //public List<Comment> comments { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
