@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+using WebAPI.Entities;
 
 namespace WebAPI.Controllers
 {
@@ -39,6 +42,21 @@ namespace WebAPI.Controllers
             bool result = dataService.PostRepository.UpdateAnnotation(id, annotation);
             dataService.Save();
             return Ok(result);
+        }
+
+        [HttpGet("search/{substring}")]
+        public IActionResult GetPostsBySearchString(string substring)
+        {
+            //try
+            //{
+                List<Post> result = dataService.PostRepository.GetPostsBySearchString(substring);
+                return Ok(result);
+            //}
+            //catch
+            //{
+            //    return BadRequest();
+            //}
+            
         }
     }
 }

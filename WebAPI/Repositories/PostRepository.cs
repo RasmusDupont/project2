@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Entities;
 using WebAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 
 namespace WebAPI.Repositories
 {
@@ -20,10 +23,10 @@ namespace WebAPI.Repositories
         //TODO fix
         public Post GetQuestionWithAnswersByPostId(int id)
         {
-            Post post = db.Post
-                .Where(x => x.Id == id)
-                .Include(p => p.Comments)
-                .FirstOrDefault();
+            Post post = db.Post.Single(x => x.Id == id);
+            //.Where(x => x.Id == id)
+            //.Include(p => p.Comments)
+            //.FirstOrDefault();
             return post;
         }
 
@@ -60,7 +63,12 @@ namespace WebAPI.Repositories
             return false;
         }
 
-        
+        public List<Post> GetPostsBySearchString(string searchString)
+        {
+            List<Post> posts = db.Post
+                .Where(x => x.Title.Contains(searchString) || x.Body.Contains(searchString))
+                .ToList();
+            return posts;
+        }
     }
 }
-

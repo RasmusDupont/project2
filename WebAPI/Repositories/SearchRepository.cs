@@ -19,18 +19,10 @@ namespace WebAPI.Repositories
             this.db = db;
         }
 
-        public List<Post> GetPostsBySearchString(string searchString)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool SaveSearch(string searchString)
         {
             try
             {
-                //db.Search.FromSql("call saveSearch(" + searchString + ")");
-                //db.SqlQuery<Search>("saveSearch",searchString);
-
                 db.Database.ExecuteSqlCommand("call saveSearch({0})", searchString);
                 return true;
             }
@@ -40,10 +32,10 @@ namespace WebAPI.Repositories
             }
         }
 
-        //TODO er en procedure
         public List<Search> GetSearchHistory()
         {
-            throw new NotImplementedException();
+            List<Search> searchHistory = db.Search.FromSql("call getSearchHistory").ToList();
+            return searchHistory;
         }
     }
 }
