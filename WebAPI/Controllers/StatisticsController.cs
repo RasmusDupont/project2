@@ -27,5 +27,17 @@ namespace WebAPI.Controllers
         {
             return Ok(dataService.StatisticsRepository.GetMostUsedTags(num));
         }
+
+        [HttpPatch("postviewcount/{id}")]
+        public IActionResult PostViewCount(int id)
+        {
+            return Ok(dataService.StatisticsRepository.UpdateViewCount(id));
+        }
+
+        [HttpPatch("tagsearchcount/{tag}")]
+        public IActionResult TagSearchCount(string tag)
+        {
+            return Ok(dataService.StatisticsRepository.UpdateTagSearchCount(tag));
+        }
     }
 }

@@ -1,9 +1,13 @@
 ﻿<Properties StartupConfiguration="{4B59EE9A-B742-4AB1-A683-9C12C4963736}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/Controllers/SearchController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/DataService.cs">
     <Files>
-      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="1" Column="1" />
-      <File FileName="WebAPI/Repositories/SearchRepository.cs" Line="26" Column="9" />
-      <File FileName="WebAPI/Controllers/SearchController.cs" Line="22" Column="81" />
+      <File FileName="WebAPI/Repositories/StatisticsRepository.cs" Line="53" Column="29" />
+      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="75" Column="70" />
+      <File FileName="WebAPI/Interfaces/IStatisticsRepository.cs" Line="15" Column="47" />
+      <File FileName="WebAPI/Interfaces/IPostRepository.cs" Line="15" Column="64" />
+      <File FileName="WebAPI/Controllers/StatisticsController.cs" Line="21" Column="10" />
+      <File FileName="WebAPI/Controllers/PostController.cs" Line="40" Column="55" />
+      <File FileName="WebAPI/DataService.cs" Line="17" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

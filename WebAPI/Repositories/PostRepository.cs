@@ -20,7 +20,7 @@ namespace WebAPI.Repositories
             this.db = db;
         }
 
-        public Post GetQuestionWithAnswersByPostId(int id)
+        public List<Post> GetQuestionWithAnswersByPostId(int id)
         {
             Post post = db.Post.FromSql("call getPost({0})", id).FirstOrDefault();
 
@@ -36,7 +36,7 @@ namespace WebAPI.Repositories
                 p.Comments = db.Comment.FromSql("call getComments({0})", p.Id).ToList();
             }
 
-            return post;
+            return posts;
         }
 
         public bool MarkPost(int id)

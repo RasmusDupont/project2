@@ -11,5 +11,7 @@ namespace WebAPI.Interfaces
     {
         List<Post> GetMostViewedPosts(int num);
         List<Tag> GetMostUsedTags(int num);
+        bool UpdateViewCount(int id);
+        bool UpdateTagSearchCount(string tag);
     }
 }

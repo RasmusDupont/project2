@@ -8,7 +8,7 @@ namespace WebAPI.Interfaces
 {
     interface IPostRepository
     {
-        Post GetQuestionWithAnswersByPostId(int id);
+        List<Post> GetQuestionWithAnswersByPostId(int id);
         bool MarkPost(int id);
         string GetAnnotation(int id);
         bool UpdateAnnotation(int id, string annotation);
