@@ -12,6 +12,7 @@ namespace WebAPI.Interfaces
         bool MarkPost(int id);
         string GetAnnotation(int id);
         bool UpdateAnnotation(int id, string annotation);
-        List<Post> GetPostsBySearchString(string searchString);
+        List<Post> GetPostsBySearchString(string searchString, int page, int pageSize);
+        int GetPostCountBySearchString(string searchString);
     }
 }

@@ -31,5 +31,7 @@ namespace WebAPI.Entities
         [Column("view_count")]
         public int ViewCount { get; set; }
         public List<Comment> Comments { get; set; }
+        public User User { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }
