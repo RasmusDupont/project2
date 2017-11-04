@@ -6,11 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
     public class StatisticsController : Controller
     {
-        public IActionResult Index()
+        private DataService dataService;
+
+        public StatisticsController(DataService dataService)
         {
-            return View();
+            this.dataService = dataService;
+        }
+
+        [HttpGet("mostviewedposts/{num}")]
+        public IActionResult MostViewedPosts(int num)
+        {
+            return Ok(dataService.StatisticsRepository.GetMostViewedPosts(num));
+        }
+
+        [HttpGet("mostusedtags/{num}")]
+        public IActionResult MostUsedTags(int num)
+        {
+            return Ok(dataService.StatisticsRepository.GetMostUsedTags(num));
         }
     }
 }

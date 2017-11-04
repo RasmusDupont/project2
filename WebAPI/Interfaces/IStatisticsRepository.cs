@@ -9,7 +9,7 @@ namespace WebAPI.Interfaces
 {
     interface IStatisticsRepository
     {
-        List<Post> GetMostViewedPosts();
-        List<Tag> GetMostUsedTags();
+        List<Post> GetMostViewedPosts(int num);
+        List<Tag> GetMostUsedTags(int num);
     }
 }
