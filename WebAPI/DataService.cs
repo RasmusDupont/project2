@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using WebAPI.Entities;
 using WebAPI.Repositories;
 using WebAPI.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace WebAPI
 {
@@ -34,6 +36,19 @@ namespace WebAPI
         {
             context.SaveChanges();
         }
-
+        public bool CheckConnection()
+        {
+            try
+            {
+                context.Database.OpenConnection();
+                context.Database.CloseConnection();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return true;
+        }
     }
 }

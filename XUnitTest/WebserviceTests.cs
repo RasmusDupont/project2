@@ -13,8 +13,8 @@ using WebAPI.DataTransferObjects;
 using System.Collections.Generic;
 
 namespace XUnitTest
-{  
-    
+{
+
     public class WebserviceTests
     {
         [Fact]
@@ -32,7 +32,7 @@ namespace XUnitTest
             Assert.IsType<OkObjectResult>(response);
         }
         [Fact]
-        public void GetQuestionWithAnswersByPostId_INvalidID ()
+        public void GetQuestionWithAnswersByPostId_INvalidID()
         {
             var dataServiceMock = new Mock<IDataService>();
             dataServiceMock.Setup(o => o.PostRepository.GetQuestionWithAnswersByPostId(It.IsAny<int>())).Returns((List<Post>)null);
@@ -163,5 +163,6 @@ namespace XUnitTest
 
             Assert.IsType<NotFoundResult>(response);
         }
+      
     }
 }
