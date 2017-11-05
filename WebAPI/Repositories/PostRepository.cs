@@ -23,7 +23,7 @@ namespace WebAPI.Repositories
         public List<Post> GetQuestionWithAnswersByPostId(int id)
         {
             Post post = db.Post.FromSql("call getPost({0})", id).FirstOrDefault();
-
+            if (post == null) return null;
             if (post.ParentId != null)
             {
                 post = db.Post.FromSql("call getPost({0})", post.ParentId).FirstOrDefault();
@@ -46,25 +46,34 @@ namespace WebAPI.Repositories
 
         public bool MarkPost(int id)
         {
-            Post post = db.Post.Single(x => x.Id == id);
-            if (post != null)
-            {
-                post.MarkedPost = !post.MarkedPost;
-                return true;
+            try {
+                Post post = db.Post.Single(x => x.Id == id);
+                if (post != null)
+                {
+                    post.MarkedPost = !post.MarkedPost;
+                    return true;
+                }
+                return false;
             }
-            return false; 
+            catch (Exception e) { Console.WriteLine(e); return false; }
+            
         }
 
         public string GetAnnotation(int id)
         {
-            Post post = db.Post.Single(x => x.Id == id);
+            try
+            {
+                Post post = db.Post.Single(x => x.Id == id);
             if (post != null)
             {
                 string annotation = post.Annotation;
                 return annotation;
             }
-            return "No annotation for this post.";
-        }
+                return "No annotation for this post.";
+
+            }
+            catch (Exception e) { Console.WriteLine(e); return "No annotation for this post."; }
+}
 
         public bool UpdateAnnotation(int id, string annotation)
         {
@@ -79,20 +88,28 @@ namespace WebAPI.Repositories
 
         public List<Post> GetPostsBySearchString(string searchString, int page, int pageSize)
         {
-            List<Post> posts = db.Post
-                                 .Where(x => x.Title.Contains(searchString) || x.Body.Contains(searchString))
-                                 .Include(u => u.User)
-                                 .Skip(pageSize * page)
-                                 .Take(pageSize)
-                .ToList();
-
-            foreach (var p in posts)
+            try
             {
-                p.Tags = this.getRelatedTags(p);
+                List<Post> posts = db.Post
+                                     .Where(x => x.Title.Contains(searchString) || x.Body.Contains(searchString))
+                                     .Include(u => u.User)
+                                     .Skip(pageSize * page)
+                                     .Take(pageSize)
+                    .ToList();
+
+                foreach (var p in posts)
+                {
+                    p.Tags = this.getRelatedTags(p);
+                }
+
+
+                return posts;
             }
-
-
-            return posts;
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
         public int GetPostCountBySearchString(string searchString)
         {

@@ -7,7 +7,7 @@ using WebAPI.Entities;
 
 namespace WebAPI.Interfaces
 {
-    interface IStatisticsRepository
+    public interface IStatisticsRepository
     {
         List<Post> GetMostViewedPosts(int num);
         List<Tag> GetMostUsedTags(int num);

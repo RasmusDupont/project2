@@ -10,9 +10,9 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class SearchController : Controller
     {
-        private DataService dataService;
+        private IDataService dataService;
 
-        public SearchController(DataService dataService)
+        public SearchController(IDataService dataService)
         {
             this.dataService = dataService;
         }

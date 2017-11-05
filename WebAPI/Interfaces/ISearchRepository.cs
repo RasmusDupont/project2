@@ -7,7 +7,7 @@ using WebAPI.Entities;
 
 namespace WebAPI.Interfaces
 {
-    interface ISearchRepository
+    public interface ISearchRepository
     {
         bool SaveSearch(string searchString);
         List<Search> GetSearchHistory();

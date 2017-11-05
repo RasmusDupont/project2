@@ -6,7 +6,7 @@ using WebAPI.Entities;
 
 namespace WebAPI.Interfaces
 {
-    interface IPostRepository
+   public interface IPostRepository
     {
         List<Post> GetQuestionWithAnswersByPostId(int id);
         bool MarkPost(int id);

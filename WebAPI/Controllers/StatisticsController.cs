@@ -9,9 +9,9 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class StatisticsController : Controller
     {
-        private DataService dataService;
+        private IDataService dataService;
 
-        public StatisticsController(DataService dataService)
+        public StatisticsController(IDataService dataService)
         {
             this.dataService = dataService;
         }
