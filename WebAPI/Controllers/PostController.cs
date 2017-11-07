@@ -96,21 +96,18 @@ namespace WebAPI.Controllers
                                                               Tags = x.Tags
                                                           }).ToList();
                 if (posts == null) { return NotFound(); }
-                PagedListDTO result = new PagedListDTO
+                PagedListDTO<SearchedPostDTO> result = new PagedListDTO<SearchedPostDTO>
                 {
                     TotalEntities = totalPosts,
                     TotalPages = totalPages,
                     CurrentPage = page,
-                    PrevLink = Link("api/post/search/{0}/{1}/{2}", substring, page, pageSize, -1, () => page > 0),
-                    NextLink = Link("api/post/search/{0}/{1}/{2}", substring, page, pageSize, 1, () => page < totalPages - 1),
+                    PrevLink = Link("/api/post/search/{0}/{1}/{2}", substring, page, pageSize, -1, () => page > 0),
+                    NextLink = Link("/api/post/search/{0}/{1}/{2}", substring, page, pageSize, 1, () => page < totalPages - 1),
                     Content = posts
                 };
                 return Ok(result);
             }
             catch(Exception e) { Console.WriteLine(e); return NotFound(); }
-        
-           
-            
         }
 
         private string Link(string route, string substring, int page, int pageSize, int pageInc = 0, Func<bool> f = null)

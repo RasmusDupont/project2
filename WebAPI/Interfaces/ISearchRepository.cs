@@ -11,5 +11,6 @@ namespace WebAPI.Interfaces
     {
         bool SaveSearch(string searchString);
         List<Search> GetSearchHistory();
+        int GetSearchHistoryCount();
     }
 }

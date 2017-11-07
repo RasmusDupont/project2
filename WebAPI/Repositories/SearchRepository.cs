@@ -37,5 +37,11 @@ namespace WebAPI.Repositories
             List<Search> searchHistory = db.Search.FromSql("call getSearchHistory").ToList();
             return searchHistory;
         }
+
+        public int GetSearchHistoryCount()
+        {
+            int count = db.Search.Count();
+            return count;
+        }
     }
 }
