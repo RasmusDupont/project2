@@ -34,11 +34,14 @@ namespace WebAPI.Repositories
             foreach (var p in posts)
             {
                 p.Comments = db.Comment.FromSql("call getComments({0})", p.Id).ToList();
+                foreach (var c in p.Comments)
+                {
+                    c.User = db.User.Where(x => x.Id == c.UserId).FirstOrDefault();
+                }
 
                 p.User = db.User.Where(x => x.Id == p.UserId).FirstOrDefault();
 
                 p.Tags = this.getRelatedTags(p);
-
             }
 
             return posts;

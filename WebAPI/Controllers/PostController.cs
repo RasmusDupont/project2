@@ -25,8 +25,7 @@ namespace WebAPI.Controllers
             try
             {
                 List<PostDTO> result = _dataService.PostRepository.GetQuestionWithAnswersByPostId(id)
-                                                  .Select(x => new PostDTO
-                                                  {
+                                                  .Select(x => new PostDTO{
                                                       Id = x.Id,
                                                       AcceptedAnswerId = x.AcceptedAnswerId,
                                                       CreateDate = x.CreateDate,
@@ -36,9 +35,18 @@ namespace WebAPI.Controllers
                                                       Title = x.Title,
                                                       MarkedPost = x.MarkedPost,
                                                       Annotation = x.Annotation,
-                                                      Comments = x.Comments,
-                                                      User = x.User,
-                                                      Tags = x.Tags
+                                                      Comments = x.Comments.Select(c => new CommentDTO{
+                                                          Id = c.Id,
+                                                          Score = c.Score,
+                                                          Text = c.Text,
+                                                          CreatedDate = c.CreateDate,
+                                                          User = c.User.DisplayName
+                                                      }).ToList(),
+                                                      User = x.User.DisplayName,
+                                                      Tags = x.Tags.Select(t => new TagDTO{
+                                                          Id = t.Id,
+                                                          Tag = t.Name
+                                                      }).ToList()
                                                   }).ToList();
                 return Ok(result);
             }
@@ -83,8 +91,7 @@ namespace WebAPI.Controllers
             try
             {
                 List<SearchedPostDTO> posts = _dataService.PostRepository.GetPostsBySearchString(substring, page, pageSize)
-                                                          .Select(x => new SearchedPostDTO
-                                                          {
+                                                          .Select(x => new SearchedPostDTO{
                                                               Id = x.Id,
                                                               CreateDate = x.CreateDate,
                                                               Score = x.Score,
@@ -92,8 +99,11 @@ namespace WebAPI.Controllers
                                                               Title = x.Title,
                                                               MarkedPost = x.MarkedPost,
                                                               Annotation = x.Annotation,
-                                                              User = x.User,
-                                                              Tags = x.Tags
+                                                              User = x.User.DisplayName,
+                                                              Tags = x.Tags.Select(t => new TagDTO{
+                                                                  Id = t.Id,
+                                                                  Tag = t.Name
+                                                              }).ToList()
                                                           }).ToList();
                 if (posts == null) { return NotFound(); }
                 PagedListDTO<SearchedPostDTO> result = new PagedListDTO<SearchedPostDTO>

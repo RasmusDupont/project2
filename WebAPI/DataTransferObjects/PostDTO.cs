@@ -15,9 +15,9 @@ namespace WebAPI.DataTransferObjects
         public string Title { get; set; }
         public bool? MarkedPost { get; set; }
         public string Annotation { get; set; }
-        public List<Comment> Comments { get; set; }
-        public User User { get; set; }
-        public List<Tag> Tags { get; set; }
+        public List<CommentDTO> Comments { get; set; }
+        public string User { get; set; }
+        public List<TagDTO> Tags { get; set; }
 
     }
 }

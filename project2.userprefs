@@ -1,12 +1,20 @@
 ﻿<Properties StartupConfiguration="{4B59EE9A-B742-4AB1-A683-9C12C4963736}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/Repositories/PostRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/Entities/Comment.cs">
     <Files>
       <File FileName="WebAPI/Entities/Post.cs" Line="14" Column="9" />
       <File FileName="WebAPI/Entities/PostTag.cs" Line="14" Column="40" />
-      <File FileName="WebAPI/DataService.cs" Line="13" Column="32" />
+      <File FileName="WebAPI/DataService.cs" Line="27" Column="63" />
       <File FileName="WebAPI/Entities/Tag.cs" Line="13" Column="45" />
       <File FileName="WebAPI/Controllers/SearchController.cs" Line="31" Column="38" />
-      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="27" Column="39" />
+      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="36" Column="80" />
+      <File FileName="XUnitTest/WebserviceTests.cs" Line="39" Column="56" />
+      <File FileName="WebAPI/Controllers/PostController.cs" Line="45" Column="40" />
+      <File FileName="WebAPI/DataTransferObjects/PostDTO.cs" Line="21" Column="9" />
+      <File FileName="WebAPI/DataTransferObjects/CommentDTO.cs" Line="8" Column="28" />
+      <File FileName="WebAPI/DataTransferObjects/TagDTO.cs" Line="8" Column="6" />
+      <File FileName="WebAPI/DataTransferObjects/PagedListDTO.cs" Line="1" Column="1" />
+      <File FileName="WebAPI/DataTransferObjects/SearchedPostDTO.cs" Line="13" Column="45" />
+      <File FileName="WebAPI/Entities/Comment.cs" Line="18" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

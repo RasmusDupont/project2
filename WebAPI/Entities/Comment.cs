@@ -15,5 +15,6 @@ namespace WebAPI.Entities
         public int PostId { get; set; }
         [Column("fk_user_id")]
         public int UserId { get; set; }
+        public User User { get; set; }
     }
 }
