@@ -32,6 +32,7 @@ namespace WebAPI.Entities
         public int ViewCount { get; set; }
         public List<Comment> Comments { get; set; }
         public User User { get; set; }
+        [NotMapped]
         public List<Tag> Tags { get; set; }
     }
 }

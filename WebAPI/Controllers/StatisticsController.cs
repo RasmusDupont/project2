@@ -16,25 +16,25 @@ namespace WebAPI.Controllers
             this.dataService = dataService;
         }
 
-        [HttpGet("mostviewedposts/{num}")]
+        [HttpGet("posts/mostviewed/{num}")]
         public IActionResult MostViewedPosts(int num)
         {
             return Ok(dataService.StatisticsRepository.GetMostViewedPosts(num));
         }
 
-        [HttpGet("mostusedtags/{num}")]
+        [HttpGet("tags/mostused/{num}")]
         public IActionResult MostUsedTags(int num)
         {
             return Ok(dataService.StatisticsRepository.GetMostUsedTags(num));
         }
 
-        [HttpPatch("postviewcount/{id}")]
+        [HttpPatch("post/viewcount/{id}")]
         public IActionResult PostViewCount(int id)
         {
             return Ok(dataService.StatisticsRepository.UpdateViewCount(id));
         }
 
-        [HttpPatch("tagsearchcount/{tag}")]
+        [HttpPatch("tag/searchcount/{tag}")]
         public IActionResult TagSearchCount(string tag)
         {
             return Ok(dataService.StatisticsRepository.UpdateTagSearchCount(tag));
