@@ -163,6 +163,35 @@ namespace XUnitTest
 
             Assert.IsType<NotFoundResult>(response);
         }
-      
+
+        [Fact]
+        public void Test_connection()
+        {
+            DataService service = new DataService();
+            Boolean con = service.CheckConnection();
+            Assert.True(con);
+        }
+
+        [Fact]
+        public async void Black_Box_TestAsync()
+        {
+            string address = "http://localhost:5001/api/";
+            HttpClient client = new HttpClient();
+            
+
+            HttpRequestMessage message = new HttpRequestMessage();
+            message.Method = HttpMethod.Get;
+            message.RequestUri = new Uri(address + "post/19");
+
+            HttpResponseMessage response = await client.SendAsync(message);
+
+            string result = await response.Content.ReadAsStringAsync();
+            string exspectedId = @"""id"":19";
+
+            Assert.Contains(exspectedId, result);
+            Assert.IsType<HttpResponseMessage>(response);
+            Assert.True(response.IsSuccessStatusCode);
+            Assert.Contains("What is the fastest way to get the value of", result);
+        }
     }
 }
