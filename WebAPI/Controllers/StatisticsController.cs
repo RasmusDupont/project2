@@ -28,13 +28,13 @@ namespace WebAPI.Controllers
             return Ok(dataService.StatisticsRepository.GetMostUsedTags(num));
         }
 
-        [HttpPatch("post/viewcount/{id}")]
+        [HttpPut("post/viewcount/{id}")]
         public IActionResult PostViewCount(int id)
         {
             return Ok(dataService.StatisticsRepository.UpdateViewCount(id));
         }
 
-        [HttpPatch("tag/searchcount/{tag}")]
+        [HttpPut("tag/searchcount/{tag}")]
         public IActionResult TagSearchCount(string tag)
         {
             return Ok(dataService.StatisticsRepository.UpdateTagSearchCount(tag));
