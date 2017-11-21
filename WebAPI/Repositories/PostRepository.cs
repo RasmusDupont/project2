@@ -8,6 +8,7 @@ using WebAPI.Entities;
 using WebAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using WebAPI.DataTransferObjects;
 
 namespace WebAPI.Repositories
 {
@@ -24,6 +25,7 @@ namespace WebAPI.Repositories
         {
             Post post = db.Post.FromSql("call getPost({0})", id).FirstOrDefault();
             if (post == null) return null;
+            //if post is not a question
             if (post.ParentId != null)
             {
                 post = db.Post.FromSql("call getPost({0})", post.ParentId).FirstOrDefault();
@@ -91,8 +93,15 @@ namespace WebAPI.Repositories
 
         public List<Post> GetPostsBySearchString(string searchString, int page, int pageSize)
         {
+
+
             try
             {
+                searchString = searchString.Replace(" ", ",");
+                List<Post> posts = db.Post.FromSql("call bestmatchWithPaging({0}, {1}, {2})", searchString, page, pageSize).ToList();
+
+                //old search
+                /*
                 List<Post> posts = db.Post
                                      .Where(x => x.Title.Contains(searchString) || x.Body.Contains(searchString))
                                      .Include(u => u.User)
@@ -100,9 +109,13 @@ namespace WebAPI.Repositories
                                      .Take(pageSize)
                     .ToList();
 
+                */
+
+
                 foreach (var p in posts)
                 {
                     p.Tags = this.getRelatedTags(p);
+                    p.User = db.User.Where(x => x.Id == p.UserId).FirstOrDefault();
                 }
 
 
@@ -114,6 +127,35 @@ namespace WebAPI.Repositories
                 return null;
             }
         }
+        public List<RankedWordsByFrequencyDTO> GetWordsFrequencyInPostSearch(string searchString)
+        {
+            MySqlConnection conn = (MySqlConnection)db.Database.GetDbConnection();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+
+            cmd.Parameters.Add("@1", DbType.String);
+            cmd.Parameters["@1"].Value = searchString;
+
+            cmd.CommandText = "call rankWordsByFrequency(@1)";
+
+            var reader = cmd.ExecuteReader();
+
+            List<RankedWordsByFrequencyDTO> wordList = new List<RankedWordsByFrequencyDTO>();
+            while (reader.Read())
+            {
+                wordList.Add(new RankedWordsByFrequencyDTO
+                {
+                    Word = reader.GetString(0),
+                    Frequency = reader.GetInt32(1)
+                });
+            }
+            conn.Close();
+            return wordList;
+
+
+        }
+
         public int GetPostCountBySearchString(string searchString)
         {
             int result = db.Post

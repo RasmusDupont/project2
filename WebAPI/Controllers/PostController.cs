@@ -105,6 +105,8 @@ namespace WebAPI.Controllers
                                                                   Tag = t.Name
                                                               }).ToList()
                                                           }).ToList();
+                
+
                 if (posts == null) { return NotFound(); }
                 PagedListDTO<SearchedPostDTO> result = new PagedListDTO<SearchedPostDTO>
                 {
@@ -118,6 +120,13 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             catch(Exception e) { Console.WriteLine(e); return NotFound(); }
+        }
+
+        [HttpGet("search/words/{substring}")]
+        public IActionResult getSearchedWordsByFrequency(string substring)
+        {
+            List<RankedWordsByFrequencyDTO> result = _dataService.PostRepository.GetWordsFrequencyInPostSearch(substring);
+            return Ok(result);
         }
 
         private string Link(string route, string substring, int page, int pageSize, int pageInc = 0, Func<bool> f = null)
