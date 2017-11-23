@@ -67,3 +67,9 @@ C:/Users/rasmu/source/repos/Project2/Project2/XUnitTest/bin/Debug/netcoreapp2.0/
 /Users/kronstrand/Documents/RUC/RAWDATA/project2/XUnitTest/bin/Debug/netcoreapp2.0/XUnitTest.dll.config
 /Users/kronstrand/Documents/RUC/RAWDATA/project2/XUnitTest/bin/Debug/netcoreapp2.0/WebAPI.dll
 /Users/kronstrand/Documents/RUC/RAWDATA/project2/XUnitTest/bin/Debug/netcoreapp2.0/WebAPI.pdb
+C:\Users\kaspe\Documents\GitHub\project2\XUnitTest\obj\Debug\netcoreapp2.0\XUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\kaspe\Documents\GitHub\project2\XUnitTest\obj\Debug\netcoreapp2.0\XUnitTest.csproj.CoreCompileInputs.cache
+C:\Users\kaspe\Documents\GitHub\project2\XUnitTest\obj\Debug\netcoreapp2.0\XUnitTest.AssemblyInfoInputs.cache
+C:\Users\kaspe\Documents\GitHub\project2\XUnitTest\obj\Debug\netcoreapp2.0\XUnitTest.AssemblyInfo.cs
+C:\Users\kaspe\Documents\GitHub\project2\XUnitTest\obj\Debug\netcoreapp2.0\XUnitTest.dll
+C:\Users\kaspe\Documents\GitHub\project2\XUnitTest\obj\Debug\netcoreapp2.0\XUnitTest.pdb

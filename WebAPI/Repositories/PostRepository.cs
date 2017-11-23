@@ -97,7 +97,7 @@ namespace WebAPI.Repositories
 
             try
             {
-                searchString = searchString.Replace(" ", ",");
+                searchString = searchString.Replace("-", ",");
                 List<Post> posts = db.Post.FromSql("call bestmatchWithPaging({0}, {1}, {2})", searchString, page, pageSize).ToList();
 
                 //old search
