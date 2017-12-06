@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{4B59EE9A-B742-4AB1-A683-9C12C4963736}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/Repositories/PostRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI/wwwroot/js/dataservice.js">
     <Files>
-      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="143" Column="43" />
-      <File FileName="WebAPI/Controllers/PostController.cs" Line="125" Column="46" />
-      <File FileName="WebAPI/Controllers/SearchController.cs" Line="39" Column="36" />
-      <File FileName="WebAPI/Repositories/SearchRepository.cs" Line="26" Column="17" />
-      <File FileName="WebAPI/DataTransferObjects/RankedWordsByFrequencyDTO.cs" Line="15" Column="10" />
+      <File FileName="WebAPI/Repositories/PostRepository.cs" Line="72" Column="30" />
+      <File FileName="WebAPI/Controllers/PostController.cs" Line="122" Column="38" />
+      <File FileName="WebAPI/wwwroot/index.html" Line="12" Column="45" />
+      <File FileName="WebAPI/wwwroot/js/main.js" Line="18" Column="17" />
+      <File FileName="WebAPI/wwwroot/js/dataservice.js" Line="19" Column="6" />
+      <File FileName="WebAPI/wwwroot/js/dataservice/postservice.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

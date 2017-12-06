@@ -7,10 +7,9 @@
     }
 });
 
-require(['jquery', 'knockout'], ($, ko) => {
+require(['jquery', 'knockout', 'dataservice'], ($, ko, ds) => {
 
     var vm = (function () {
-
 
         var out = ko.observable();
         var p = ko.observableArray();
@@ -23,14 +22,10 @@ require(['jquery', 'knockout'], ($, ko) => {
 
     })();
 
+    console.log(ds);
+    vm.out((ds.getPost(19)));
+    console.log(vm.out());
 
-    $.getJSON("http://localhost:5001/api/posts", function(data) {
-
-        vm.out(JSON.stringify(data.items));
-        vm.p(data.items);
-        console.log(vm.p()[0].title);
-
-    });
 
     ko.applyBindings(vm);
 
