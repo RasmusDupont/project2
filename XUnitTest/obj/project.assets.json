@@ -14413,7 +14413,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kaspe\\.nuget\\packages\\": {},
+    "C:\\Users\\kronstrand\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -14422,17 +14422,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\kaspe\\Documents\\GitHub\\project2\\XUnitTest\\XUnitTest.csproj",
+      "projectUniqueName": "C:\\Users\\kronstrand\\Documents\\RUC\\project2\\XUnitTest\\XUnitTest.csproj",
       "projectName": "XUnitTest",
-      "projectPath": "C:\\Users\\kaspe\\Documents\\GitHub\\project2\\XUnitTest\\XUnitTest.csproj",
-      "packagesPath": "C:\\Users\\kaspe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kaspe\\Documents\\GitHub\\project2\\XUnitTest\\obj\\",
+      "projectPath": "C:\\Users\\kronstrand\\Documents\\RUC\\project2\\XUnitTest\\XUnitTest.csproj",
+      "packagesPath": "C:\\Users\\kronstrand\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kronstrand\\Documents\\RUC\\project2\\XUnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kaspe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kronstrand\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -14445,8 +14445,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\kaspe\\Documents\\GitHub\\project2\\WebAPI\\WebAPI.csproj": {
-              "projectPath": "C:\\Users\\kaspe\\Documents\\GitHub\\project2\\WebAPI\\WebAPI.csproj"
+            "C:\\Users\\kronstrand\\Documents\\RUC\\project2\\WebAPI\\WebAPI.csproj": {
+              "projectPath": "C:\\Users\\kronstrand\\Documents\\RUC\\project2\\WebAPI\\WebAPI.csproj"
             }
           }
         }

@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    
+    <div data-bind="text: out"></div>
+
+    <div data-bind="foreach: p">
+        <a data-bind="attr: { href: link }">
+            <div data-bind="text: title"></div>
+        </a>
+    </div>
+
+    <script data-main="js/main" src="lib/requirejs/require.js"></script>
+</body>
+</html>

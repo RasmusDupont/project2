@@ -37,6 +37,7 @@ namespace Project2
             }
 
             app.UseMvc();
+            app.UseFileServer();
         }
     }
 }
