@@ -1,19 +1,44 @@
-﻿define(['jquery'], ($) => {
+﻿define(['dataservice/postservice'], function(ps){
 
-    function getPost(postId){
+    var baseUrl = "http://localhost:5001";
 
-            return $.getJSON("http://localhost:5001/api/post/19").then(function(data) {
+    function getPost(postId, callback){
 
-                //JSON.stringify(data);
+        ps.getPost(postId, baseUrl, callback);
+    }
 
-                console.log(data);
-                return data;
+    function putMark(postId, callback){
 
-            })
-       }
+        ps.putMark(postId, baseUrl, callback);
+    }
+
+    function getAnnotation(postId, callback){
+
+        ps.getAnnotation(postId, baseUrl, callback);
+    }
+
+    function putAnnotation(postId, annotation, callback){
+
+        ps.putAnnotation(postId, baseUrl, baseUrl, callback);
+    }
+
+    function searchPosts(search, page, pageSize, callback){
+
+        ps.searchPosts(search, page, pageSize, baseUrl, callback);
+    }
+
+    function getSearchedWords(search, callback){
+
+        ps.getSearchedWords(search, baseUrl, callback);
+    }
     
-    return{
-        getPost
+    return {
+        getPost,
+        putMark,
+        getAnnotation,
+        putAnnotation,
+        searchPosts,
+        getSearchedWords
     }
    
 });

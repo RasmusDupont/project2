@@ -7,7 +7,7 @@
     }
 });
 
-require(['jquery', 'knockout', 'dataservice'], ($, ko, ds) => {
+require(['knockout', 'dataservice'], (ko, ds) => {
 
     var vm = (function () {
 
@@ -22,10 +22,14 @@ require(['jquery', 'knockout', 'dataservice'], ($, ko, ds) => {
 
     })();
 
-    console.log(ds);
-    vm.out((ds.getPost(19)));
-    console.log(vm.out());
+    ds.getSearchedWords("sql,boost", function(data){
 
+        vm.out(JSON.stringify(data));
+        console.log(vm.out());
+    })
+
+    console.log(ds);
+    //vm.out((ds.getPost(19)));
 
     ko.applyBindings(vm);
 
