@@ -1,9 +1,9 @@
 ﻿require.config({
     baseUrl: "js",
     paths: {
-        jquery: "../lib/jquery/dist/jquery.js",
-        knockout: "../lib/knockout/dist/knockout.js",
-        bootstrap: "../lib/bootstrap/dist/js/bootstrap.js"
+        jquery: "../lib/jquery/dist/jquery",
+        knockout: "../lib/knockout/dist/knockout",
+        bootstrap: "../lib/bootstrap/dist/js/bootstrap"
     }
 });
 
