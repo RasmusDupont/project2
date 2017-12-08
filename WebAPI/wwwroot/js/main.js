@@ -1,13 +1,13 @@
 ﻿require.config({
     baseUrl: "js",
     paths: {
-        jquery: "../lib/jquery/dist/jquery.min",
-        knockout: "../lib/knockout/dist/knockout",
-        text: "../lib/text/text"
+        jquery: "../lib/jquery/dist/jquery.js",
+        knockout: "../lib/knockout/dist/knockout.js",
+        bootstrap: "../lib/bootstrap/dist/js/bootstrap.js"
     }
 });
 
-require(['knockout', 'dataservice'], (ko, ds) => {
+require(['knockout', 'bootstrap', 'dataservice'], (ko, ds) => {
 
     var vm = (function () {
 
@@ -22,11 +22,12 @@ require(['knockout', 'dataservice'], (ko, ds) => {
 
     })();
 
-    ds.getSearchedWords("sql,boost", function(data){
+    ds.getSearchedWords("sql,boost",
+        function(data) {
 
-        vm.out(JSON.stringify(data));
-        console.log(vm.out());
-    })
+            vm.out(JSON.stringify(data));
+            console.log(vm.out());
+        });
 
     console.log(ds);
     //vm.out((ds.getPost(19)));
