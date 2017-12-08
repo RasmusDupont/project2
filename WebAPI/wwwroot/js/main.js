@@ -1,13 +1,13 @@
 ﻿require.config({
     baseUrl: "js",
     paths: {
-        jquery: "../lib/jquery/dist/jquery.js",
-        knockout: "../lib/knockout/dist/knockout.js",
-        bootstrap: "../lib/bootstrap/dist/js/bootstrap.js"
+        jquery: "../lib/jquery/dist/jquery",
+        knockout: "../lib/knockout/dist/knockout",
+        bootstrap: "../lib/bootstrap/dist/js/bootstrap"
     }
 });
 
-require(['knockout', 'bootstrap', 'dataservice'], (ko, ds) => {
+require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
