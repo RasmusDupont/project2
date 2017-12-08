@@ -26,7 +26,7 @@ namespace WebAPI.Repositories
                 db.Database.ExecuteSqlCommand("call saveSearch({0})", searchString);
                 return true;
             }
-            catch
+            catch 
             {
                 return false;
             }

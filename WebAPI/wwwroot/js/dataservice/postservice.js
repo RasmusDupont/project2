@@ -50,7 +50,7 @@
             type: "PUT",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            data: annotation,
+            data: JSON.stringify(annotation),
             success: function(data) {
 
                 console.log("putAnnotation");

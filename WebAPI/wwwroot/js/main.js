@@ -22,7 +22,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     })();
 
-    ds.getSearchedWords("sql,boost",
+    ds.getSearchHistory(1,3,
         function(data) {
 
             vm.out(JSON.stringify(data));

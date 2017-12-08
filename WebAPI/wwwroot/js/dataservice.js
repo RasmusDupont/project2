@@ -1,4 +1,6 @@
-﻿define(['dataservice/postservice'], function(ps){
+﻿define(['dataservice/postservice', 
+        'dataservice/searchservice'], 
+        function(ps, ss){
 
     var baseUrl = "http://localhost:5001";
 
@@ -31,6 +33,16 @@
 
         ps.getSearchedWords(search, baseUrl, callback);
     }
+
+    function saveSearch(searchString, callback){
+
+        ss.saveSearch(searchString, baseUrl, callback);
+    }
+
+    function getSearchHistory(page, pageSize, callback){
+
+        ss.getSearchHistory(page, pageSize, baseUrl, callback);
+    }
     
     return {
         getPost,
@@ -38,7 +50,9 @@
         getAnnotation,
         putAnnotation,
         searchPosts,
-        getSearchedWords
+        getSearchedWords,
+        saveSearch,
+        getSearchHistory
     }
    
 });
