@@ -1,5 +1,11 @@
 ﻿require.config({
     baseUrl: "js",
+    shim: {
+      bootstrap: {
+        deps: ['jquery'],
+        exports: 'Bootstrap'
+      }  
+    },
     paths: {
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/dist/knockout",
