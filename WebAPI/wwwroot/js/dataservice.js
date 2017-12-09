@@ -1,6 +1,7 @@
 ﻿define(['dataservice/postservice', 
-        'dataservice/searchservice'], 
-        function(ps, ss){
+        'dataservice/searchservice',
+        'dataservice/statisticsservice'], 
+        function(ps, ss, sts){
 
     var baseUrl = "http://localhost:5001";
 
@@ -43,8 +44,29 @@
 
         ss.getSearchHistory(page, pageSize, baseUrl, callback);
     }
-    
+
+    function getMostViewedPosts(num, callback){
+
+        sts.getMostViewedPosts(num, baseUrl, callback);
+    }
+
+    function getMostUsedTags(num, callback){
+
+        sts.getMostUsedTags(num, baseUrl, callback);
+    }
+
+    function putPostViewCount(id, callback){
+
+        sts.putPostViewCount(id, baseUr, callback);
+    }
+
+    function putTagSearchCount(tag, callback){
+
+        sts.putTagSearchCount(tag, baseUrl, callback);
+    }
+
     return {
+
         getPost,
         putMark,
         getAnnotation,
@@ -52,7 +74,12 @@
         searchPosts,
         getSearchedWords,
         saveSearch,
-        getSearchHistory
+        getSearchHistory,
+        getMostViewedPosts,
+        getMostUsedTags,
+        putPostViewCount,
+        putTagSearchCount
+
     }
    
 });

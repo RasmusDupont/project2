@@ -22,7 +22,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     })();
 
-    ds.getSearchHistory(1,3,
+    ds.putTagSearchCount("sql",
         function(data) {
 
             vm.out(JSON.stringify(data));
