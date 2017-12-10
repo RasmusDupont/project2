@@ -1,19 +1,20 @@
 ﻿require.config({
     baseUrl: "js",
     shim: {
-      bootstrap: {
-        deps: ['jquery'],
-        exports: 'Bootstrap'
-      }  
+        bootstrap: {
+            deps: ['jquery'],
+            exports: 'Bootstrap'
+        }
     },
     paths: {
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/dist/knockout",
-        bootstrap: "../lib/bootstrap/dist/js/bootstrap"
+        bootstrap: "../lib/bootstrap/dist/js/bootstrap",
+        charts: "../lib/charts/loader"
     }
 });
 
-require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
+require(['knockout', 'bootstrap', 'dataservice', 'charts'], (ko, bs, ds) => {
 
     var vm = (function () {
 
