@@ -9,8 +9,18 @@
     paths: {
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/dist/knockout",
-        bootstrap: "../lib/bootstrap/dist/js/bootstrap"
+        bootstrap: "../lib/bootstrap/dist/js/bootstrap",
+        text: "../lib/text/text"
     }
+});
+
+
+require(['knockout'], function (ko) {
+    ko.components.register("QA",
+        {
+            viewModel: { require: "components/QA/QA" },
+            template: { require: "text!components/QA/QA.html" }
+        });
 });
 
 require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
@@ -19,14 +29,17 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
         var out = ko.observable();
         var p = ko.observableArray();
-
+        var QA = ko.observable("QA");
 
         return {
             out,
-            p
+            p,
+            QA
         };
 
     })();
+
+    console.log("QA component: " + ko.components.isRegistered('QA'));
 
     ds.putTagSearchCount("sql",
         function(data) {

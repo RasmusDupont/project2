@@ -1,9 +1,16 @@
-﻿<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-    </body>
-</html>
+﻿
+<link rel="stylesheet" type="text/css" href="./js/components/QA/QA.css">
+<h4 data-bind="text: title"></h4>
+<ul class="list-group" data-bind="foreach: qaPosts">
+    
+    <li class="list-group-item">
+        <div data-bind="html: body"></div>
+        <div data-bind="text: user"></div>
+        <div>
+            <div data-bind="click: $parent.clickMark, attr: { class: markedPost }" id="fav"></div>
+            <div data-bind="text: annotation" contenteditable="true"></div>
+        </div>
+    </li>
+
+</ul>
+
