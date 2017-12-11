@@ -21,16 +21,7 @@
 
             ds.putAnnotation(data.id, data.annotation(), function(d){});
 
-            for(i = 0; i < qaPosts().length; i++)
-            {
-                if(qaPosts()[i].id === data.id){
-                    console.log(qaPosts()[i]);
-                }
-            }
-            console.log(data);
         }
-
-        var edited;
 
         // get posts
         ds.getPost(19,
