@@ -98,7 +98,23 @@ namespace WebAPI.Repositories
             try
             {
                 searchString = searchString.Replace("-", ",");
+                searchString = searchString.Replace(" ", ",");
                 List<Post> posts = db.Post.FromSql("call bestmatchWithPaging({0}, {1}, {2})", searchString, page, pageSize).ToList();
+
+                //adds title of question to each answer
+                foreach(var p in posts)
+                {
+                    if(p.Title == null)
+                    {
+                        try{
+                            Post post = db.Post.Single(x => x.Id == p.ParentId);
+                            p.Title = post.Title;
+                        }
+                        catch{
+                            p.Title = "[No Title]";
+                        }
+                    }
+                }
 
                 //old search
                 /*

@@ -16,11 +16,19 @@
 
 
 require(['knockout'], function (ko) {
+
     ko.components.register("QA",
-        {
-            viewModel: { require: "components/QA/QA" },
-            template: { require: "text!components/QA/QA.html" }
-        });
+    {
+        viewModel: { require: "components/QA/QA" },
+        template: { require: "text!components/QA/QA.html" }
+    });
+
+    ko.components.register("searchresult",
+    {
+        viewModel: { require: "components/searchresult/searchresult" },
+        template: { require: "text!components/searchresult/searchresult.html" }
+    });
+
 });
 
 require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
@@ -29,7 +37,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
         var out = ko.observable();
         var p = ko.observableArray();
-        var QA = ko.observable("QA");
+        var QA = ko.observable("searchresult");
 
         return {
             out,
