@@ -1,6 +1,14 @@
 ﻿
-#fav {
+.markIcon {
+
     font-size: 30px;
+}
+.answerIcon {
+    
+        font-size: 23px;
+}
+.score {
+    font-size:25px;
 }
 .form-control-static {
     border-radius: 10px;
@@ -8,3 +16,11 @@
     background-color: #efefef;
 
 }
+.createdDate {
+    color: gray;
+}
+.tag {
+    background-color: black;
+    margin-left: 10px;
+}
+

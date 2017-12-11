@@ -24,8 +24,22 @@
         }
 
         // get posts
-        ds.getPost(19,
+        ds.getPost(427217,
             function(data) {
+
+ 
+                for(i = 0; i < data.length; i++)
+                {
+                    if(data[0].acceptedAnswerId === data[i].id)
+                    {
+                        data[i].acceptedAnswer = ko.observable(true);
+                    }
+                    else
+                    {
+                        data[i].acceptedAnswer = ko.observable(false);
+                    }
+                }
+
 
                 //make markedPost observable
                 for(i = 0;i < data.length;i++){
