@@ -1,0 +1,74 @@
+﻿
+<link rel="stylesheet" type="text/css" href="./js/components/QA/QA.css">
+<h4 data-bind="text: title"></h4>
+<ul class="list-group" data-bind="foreach: qaPosts">
+    
+    <li class="list-group-item">
+        <div data-bind="html: body"></div>
+        <div class="row">
+
+            <!-- tags -->
+
+            <div class="col-xs-11">
+                <div data-bind="foreach: tags">
+                    <div class="tag badge badge-default" data-bind="text: tag"></div>
+                </div>
+            </div>
+
+
+            <!-- score -->
+
+            <div class="col-xs-1">
+                <div class="score" data-bind="text: score"></div>
+            </div>
+        </div>
+        <br />
+    <div class=row>
+        <div class="col-xs-11">
+            <b>Posted by <span data-bind="text: user"></span></b><br />
+            <span class="createdDate" data-bind="text: createDate"></span>
+        </div>
+        
+
+        <!-- accepted answer -->
+
+        <div data-bind="if: acceptedAnswer">
+            <div class="answerIcon col-xs-1 glyphicon glyphicon-ok"></div>
+        </div>
+        <div data-bind="ifnot: acceptedAnswer">
+                <div class="answerIcon col-xs-1"></div>
+        </div>
+        
+    </div>
+
+        <!-- marking and annotation -->
+
+
+        <div class="row" data-bind="if: markedPost">
+            <div class="col-xs-5"></div>
+            <input class="col-xs-6 form-control-static" data-bind="textInput: annotation, event: { blur: $parent.saveAnnotation }" contenteditable="true"></input>
+            <div class="markIcon col-xs-1 glyphicon glyphicon-star fav" data-bind="click: $parent.clickMark"></div>
+        </div>
+        <div class="row" data-bind="ifnot: markedPost">
+            <div class="col-xs-11" ></div>
+            <div class="markIcon col-xs-1 glyphicon glyphicon-star-empty fav" data-bind="click: $parent.clickMark" id="fav"></div>
+        </div>
+        <br />
+        
+
+
+        <!-- comments -->
+        <div class="row">
+            <ul class="list-group" data-bind="foreach: comments">
+                    <li class="list-group-item">
+                            <span  data-bind="text: text"></span>
+                            - <span data-bind="text: user"></span>
+                            <span class="createdDate" data-bind="text: createdDate"></span>
+                    </li>
+            </ul>
+        </div>
+
+    </li>
+
+</ul>
+
