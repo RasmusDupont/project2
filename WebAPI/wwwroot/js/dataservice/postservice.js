@@ -18,7 +18,7 @@
             dataType: "json",
             data: "",
             success: function(data) {
-                console.log("Post marked");
+                console.log("Put mark");
 
                 //returns true or falls
                 callback(data);

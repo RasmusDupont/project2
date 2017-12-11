@@ -2,20 +2,20 @@
 
     return function (params) {
 
-        var title = ko.observableArray();
+        var title = ko.observable();
         var qaPosts = ko.observableArray();
         var clickMark = function(data, event){
 
             for(i = 0; i < qaPosts().length; i++)
             {
                 if(qaPosts()[i].id === data.id){
-                    if (qaPosts()[i].markedPost() === "glyphicon glyphicon-star")
+                    if (qaPosts()[i].markedPost() === true)
                     {
-                        qaPosts()[i].markedPost("glyphicon glyphicon-star-empty")
+                        qaPosts()[i].markedPost(false)
                     }
                     else 
                     {
-                        qaPosts()[i].markedPost("glyphicon glyphicon-star");
+                        qaPosts()[i].markedPost(true);
                     }
                     ds.putMark(data.id,function(d){});
                 }
@@ -27,19 +27,10 @@
         ds.getPost(19,
             function(data) {
 
-                //modify mark to fit viewmodel
+                //make markedPost observable
                 for(i = 0;i < data.length;i++){
 
-
-                    if(data[i].markedPost === true){
-
-                        data[i].markedPost = ko.observable("glyphicon glyphicon-star");
-                    }
-                    else{
-
-                        data[i].markedPost = ko.observable("glyphicon glyphicon-star-empty");
-                    }
-                   
+                    data[i].markedPost = ko.observable(data[i].markedPost);
                 }
 
                 console.log(data);

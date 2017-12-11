@@ -2,3 +2,8 @@
 #fav {
     font-size: 30px;
 }
+.form-control-static {
+    border-radius: 10px;
+    //border: solid;
+    background-color: #efefef;
+}

@@ -5,10 +5,21 @@
     
     <li class="list-group-item">
         <div data-bind="html: body"></div>
-        <div data-bind="text: user"></div>
         <div>
-            <div data-bind="click: $parent.clickMark, attr: { class: markedPost }" id="fav"></div>
-            <div data-bind="text: annotation" contenteditable="true"></div>
+            <b>Posted by <span data-bind="text: user"></span></b><br />
+            <span data-bind="text: createDate"></span>
+
+        </div>
+        <div class="container-fluid">
+            <div class="row" data-bind="if: markedPost">
+                <div class="col-xs-5" "></div>
+                <div class="col-xs-6 form-control-static" data-bind="text: annotation" contenteditable="true"></div>
+                <div class="col-xs-1 glyphicon glyphicon-star" data-bind="click: $parent.clickMark" id="fav"></div>
+            </div>
+            <div class="row" data-bind="ifnot: markedPost">
+                <div class="col-xs-11" "></div>
+                <div class="col-xs-1 glyphicon glyphicon-star-empty" data-bind="click: $parent.clickMark" id="fav"></div>
+            </div>
         </div>
     </li>
 
