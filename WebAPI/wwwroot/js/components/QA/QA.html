@@ -12,12 +12,12 @@
         </div>
         <div class="container-fluid">
             <div class="row" data-bind="if: markedPost">
-                <div class="col-xs-5" "></div>
-                <div class="col-xs-6 form-control-static" data-bind="text: annotation" contenteditable="true"></div>
+                <div class="col-xs-5"></div>
+                <input class="col-xs-6 form-control-static" data-bind="textInput: annotation, event: { blur: $parent.saveAnnotation }" contenteditable="true"></input>
                 <div class="col-xs-1 glyphicon glyphicon-star" data-bind="click: $parent.clickMark" id="fav"></div>
             </div>
             <div class="row" data-bind="ifnot: markedPost">
-                <div class="col-xs-11" "></div>
+                <div class="col-xs-11" ></div>
                 <div class="col-xs-1 glyphicon glyphicon-star-empty" data-bind="click: $parent.clickMark" id="fav"></div>
             </div>
         </div>

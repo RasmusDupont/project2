@@ -22,7 +22,7 @@
 
     function putAnnotation(postId, annotation, callback){
 
-        ps.putAnnotation(postId, baseUrl, baseUrl, callback);
+        ps.putAnnotation(postId, annotation, baseUrl, callback);
     }
 
     function searchPosts(search, page, pageSize, callback){

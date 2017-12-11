@@ -4,6 +4,7 @@
 }
 .form-control-static {
     border-radius: 10px;
-    //border: solid;
-    background-color: #efefef;
+    border: solid;
+    background-color: #efefef;
+
 }

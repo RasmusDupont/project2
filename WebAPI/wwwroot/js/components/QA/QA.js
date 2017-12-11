@@ -6,22 +6,31 @@
         var qaPosts = ko.observableArray();
         var clickMark = function(data, event){
 
+            if (data.markedPost() === true)
+            {
+                data.markedPost(false);
+            }
+            else 
+            {
+                data.markedPost(true);
+            }
+            ds.putMark(data.id,function(d){});
+       
+        }
+        var saveAnnotation = function(data, event){
+
+            ds.putAnnotation(data.id, data.annotation(), function(d){});
+
             for(i = 0; i < qaPosts().length; i++)
             {
                 if(qaPosts()[i].id === data.id){
-                    if (qaPosts()[i].markedPost() === true)
-                    {
-                        qaPosts()[i].markedPost(false)
-                    }
-                    else 
-                    {
-                        qaPosts()[i].markedPost(true);
-                    }
-                    ds.putMark(data.id,function(d){});
+                    console.log(qaPosts()[i]);
                 }
             }
-                        
+            console.log(data);
         }
+
+        var edited;
 
         // get posts
         ds.getPost(19,
@@ -31,6 +40,8 @@
                 for(i = 0;i < data.length;i++){
 
                     data[i].markedPost = ko.observable(data[i].markedPost);
+                    data[i].annotation = ko.observable(data[i].annotation);
+
                 }
 
                 console.log(data);
@@ -44,7 +55,8 @@
         return {
             title,
             qaPosts,
-            clickMark
+            clickMark,
+            saveAnnotation
         };
 
     }
