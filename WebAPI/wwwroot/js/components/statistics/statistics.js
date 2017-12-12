@@ -4,44 +4,45 @@
 
         var title = ko.observableArray();
 
-        ////////////////////////////////
+        var graphObjects = [];
 
-        // Load the Visualization API and the corechart package.
-        google.charts.load('current', { 'packages': ['corechart'] });
+        ds.getMostViewedPosts(15, function(data) {
 
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
+            for (var i = 0; i < data.length; i++) {
+                var array = [];
+                if (data[i]['title'] != null) {
+                    array = [data[i]['title'], data[i]['viewCount']];
+                } else {
+                    array = ['No title', data[i]['viewCount']];
+                }
+                graphObjects.push(array);
+            }
+        });
 
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function drawChart() {
+        
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawBasic);
 
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
-            data.addRows([
-                ['Mushrooms', 3],
-                ['Onions', 1],
-                ['Olives', 1],
-                ['Zucchini', 1],
-                ['Pepperoni', 2]
-            ]);
+        function drawBasic() {
+            graphObjects.unshift(['Post','Views']);
+            var data = google.visualization.arrayToDataTable(graphObjects);
 
-            // Set chart options
             var options = {
-                'title': 'How Much Pizza I Ate Last Night',
-                'width': 400,
-                'height': 300
+                title: 'Most viewed posts',
+                chartArea: { width: '50%' },
+                hAxis: {
+                    title: 'Total Views',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Post'
+                }
             };
 
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
             chart.draw(data, options);
         }
-
-        //////////////////////////////////
 
 
         return {
