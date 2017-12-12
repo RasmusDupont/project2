@@ -31,7 +31,8 @@ namespace WebAPI.Controllers
             int totalPosts = dataService.SearchRepository.GetSearchHistoryCount();
             int totalPages = (int)Math.Ceiling(totalPosts / (double)pageSize);
 
-            List<Search> searchHistory = dataService.SearchRepository.GetSearchHistory();
+            List<Search> searchHistory = dataService.SearchRepository.GetSearchHistory().Skip(pageSize * page)
+                                     .Take(pageSize).ToList();
             PagedListDTO<Search> result = new PagedListDTO<Search>
             {
                 TotalEntities = totalPosts,

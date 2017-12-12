@@ -23,13 +23,21 @@ require(['knockout'], function (ko) {
         });
 });
 
+require(['knockout'], function (ko) {
+    ko.components.register("SearchHistory",
+        {
+            viewModel: { require: "components/SearchHistory/SearchHistory" },
+            template: { require: "text!components/SearchHistory/SearchHistory.html" }
+        });
+});
+
 require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
         var out = ko.observable();
         var p = ko.observableArray();
-        var QA = ko.observable("QA");
+        var QA = ko.observable("SearchHistory");
 
         return {
             out,
