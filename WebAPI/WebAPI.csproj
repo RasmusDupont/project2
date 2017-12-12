@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\js\components\" />
     <Folder Include="wwwroot\js\components\QA\" />
   </ItemGroup>
 
