@@ -32,7 +32,12 @@ require(['knockout'], function (ko) {
     {
         viewModel: { require: "components/SearchHistory/SearchHistory" },
         template: { require: "text!components/SearchHistory/SearchHistory.html" }
-    });
+        });
+    ko.components.register("wordcloud",
+        {
+            viewModel: { require: "components/wordcloud/wordcloud" },
+            template: { require: "text!components/wordcloud/wordcloud.html" }
+        });
 
 });
 
@@ -50,7 +55,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
         var out = ko.observable();
         var p = ko.observableArray();
-        var QA = ko.observable("QA");
+        var QA = ko.observable("wordcloud");
 
 
 
@@ -62,7 +67,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     })();
 
-    console.log("QA component: " + ko.components.isRegistered('QA'));
+    console.log("QA component: " + ko.components.isRegistered('wordcloud'));
 
     ds.putTagSearchCount("sql",
         function(data) {
