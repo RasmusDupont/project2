@@ -28,6 +28,11 @@ require(['knockout'], function (ko) {
         viewModel: { require: "components/searchresult/searchresult" },
         template: { require: "text!components/searchresult/searchresult.html" }
     });
+    ko.components.register("searchhistory",
+    {
+        viewModel: { require: "components/SearchHistory/SearchHistory" },
+        template: { require: "text!components/SearchHistory/SearchHistory.html" }
+    });
 
 });
 
@@ -45,11 +50,9 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
         var out = ko.observable();
         var p = ko.observableArray();
-<<<<<<< HEAD
-        var QA = ko.observable("searchresult");
-=======
-        var QA = ko.observable("SearchHistory");
->>>>>>> search-history
+        var QA = ko.observable("QA");
+
+
 
         return {
             out,
