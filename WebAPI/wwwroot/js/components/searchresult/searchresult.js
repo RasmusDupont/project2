@@ -9,7 +9,8 @@ define (['knockout','dataservice'], function(ko, ds){
             var next = ko.observable();
             var prev = ko.observable();
             var choosePost = function(data, event){
-                alert("data.id");
+                
+                alert("go to: " + data.id);
             }
             var prevPage = function(data,evnt){
                 loadViewModel(searchString, page-1, pageSize);
@@ -39,6 +40,7 @@ define (['knockout','dataservice'], function(ko, ds){
 
                     page = p;
                     pageSize = pSize;
+                    
                     searchString = search;
 
                     next(data.nextLink);
@@ -48,7 +50,7 @@ define (['knockout','dataservice'], function(ko, ds){
 
             }
             
-            loadViewModel("sql", 0, 10);
+            loadViewModel("boost", 0, 10);
 
             return {
                 result,

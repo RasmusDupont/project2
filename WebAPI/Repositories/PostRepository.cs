@@ -97,8 +97,7 @@ namespace WebAPI.Repositories
 
             try
             {
-                searchString = searchString.Replace("-", ",");
-                searchString = searchString.Replace(" ", ",");
+                searchString = PrepareSearchString(searchString);
                 List<Post> posts = db.Post.FromSql("call bestmatchWithPaging({0}, {1}, {2})", searchString, page, pageSize).ToList();
 
                 //adds title of question to each answer
@@ -174,10 +173,17 @@ namespace WebAPI.Repositories
 
         public int GetPostCountBySearchString(string searchString)
         {
+
+            searchString = PrepareSearchString(searchString);
+            int result = db.Post.FromSql("call bestmatch({0})", searchString).ToList().Count();
+            return result;
+
+            /*old implementation
             int result = db.Post
                            .Where(x => x.Title.Contains(searchString) || x.Body.Contains(searchString))
                            .Count();
             return result;
+            */
         }
 
         private List<Tag> getRelatedTags (Post post)
@@ -191,6 +197,14 @@ namespace WebAPI.Repositories
                     .Select(s => new Tag { Id = s.Tag.Id, Name = s.Tag.Name, SearchCount = s.Tag.SearchCount })
                     .ToList();
             return post.Tags;
+        }
+
+        private string PrepareSearchString(string searchString)
+        {
+            searchString = searchString.Replace("-", ",");
+            searchString = searchString.Replace(" ", ",");
+
+            return searchString;
         }
     }
 }

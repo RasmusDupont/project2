@@ -1,4 +1,20 @@
 <link rel="stylesheet" type="text/css" href="./js/components/searchresult/searchresult.css">
+
+<!-- paging -->
+
+<span data-bind="if: prev">
+        <button type="button" class="btn-default" data-bind="click: prevPage"><<</button>
+</span>
+<span data-bind="ifnot: prev">
+        <button type="button" class="btn-default" disabled><<</button>
+</span>
+<span data-bind="if: next">
+        <button type="button" class="btn-default" data-bind="click: nextPage">>></button>
+</span>
+<span data-bind="ifnot: next">
+        <button type="button" class="btn-default" disabled>>></button>
+</span>
+
 <!--searchresult-->
 <ul class="list-group" data-bind="foreach: result">
         <li class="list-group-item" data-bind="click: $parent.choosePost">
@@ -9,7 +25,3 @@
 
 
 
-<!-- paging -->
-
-<button type="button" class="btn-default active" data-bind="visible: prev, click: prevPage"><<</button>
-<button type="button" class="btn-default" data-bind="visible: next , click: nextPage">>></button>
