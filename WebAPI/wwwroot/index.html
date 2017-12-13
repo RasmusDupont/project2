@@ -26,30 +26,22 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Force Network</a></li>
-                    <li><a href="#">Statistics</a></li>
+                    <li><a id="searchhistory" href="#" data-bind="click: clickNav">Search History</a></li>
+                    <li><a id="statistics" href="#" data-bind="click: clickNav">Statistics</a></li>
                 </ul>
-                <form class="navbar-form navbar-left">
+                <div class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search for posts">
+                        <input  id="id_search" type="text" class="form-control" placeholder="Search for posts">
                     </div>
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
+                    <button class="btn btn-default" data-bind="click: clickSearch">Search</button>
+                </div>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
     <!---->
-    midsection blablablab
 
-    <div data-bind="component: QA"></div>
+    <div data-bind="component: { name: main, params: { searchString: searchField() } }"></div>
 
-    <div data-bind="text: out"></div>
-
-    <div data-bind="foreach: p">
-        <a data-bind="attr: { href: link }">
-            <div data-bind="text: title"></div>
-        </a>
-    </div>
     <!-- footer -->
     <div class="panel panel-default">
         <div class="panel-footer">Footer</div>

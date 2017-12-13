@@ -36,43 +36,32 @@ require(['knockout'], function (ko) {
 
 });
 
-require(['knockout'], function (ko) {
-    ko.components.register("SearchHistory",
-        {
-            viewModel: { require: "components/SearchHistory/SearchHistory" },
-            template: { require: "text!components/SearchHistory/SearchHistory.html" }
-        });
-});
-
 require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
-        var out = ko.observable();
-        var p = ko.observableArray();
-        var QA = ko.observable("QA");
-
-
+        var main = ko.observable("QA");
+        var searchField = ko.observable();
+        var clickNav = function(data, event){
+            
+            //change page
+            main(event.target.id);
+        }
+        var clickSearch = function(data, event){
+            searchField(document.getElementById("id_search").value);
+            main("searchresult");
+        }
 
         return {
-            out,
-            p,
-            QA
+            main,
+            searchField,
+            clickNav,
+            clickSearch
         };
 
     })();
 
-    console.log("QA component: " + ko.components.isRegistered('QA'));
 
-    ds.putTagSearchCount("sql",
-        function(data) {
-
-            vm.out(JSON.stringify(data));
-            console.log(vm.out());
-        });
-
-    console.log(ds);
-    //vm.out((ds.getPost(19)));
 
     ko.applyBindings(vm);
 

@@ -2,7 +2,8 @@ define (['knockout','dataservice'], function(ko, ds){
     
         return function (params) {
 
-            var searchString;
+            console.log(params);
+            var searchString = params.searchString;
             var page;
             var pageSize;
             var result = ko.observableArray();
@@ -50,7 +51,7 @@ define (['knockout','dataservice'], function(ko, ds){
 
             }
             
-            loadViewModel("boost", 0, 10);
+            loadViewModel(searchString, 0, 10);
 
             return {
                 result,
