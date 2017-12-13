@@ -20,13 +20,11 @@
         var saveAnnotation = function(data, event){
 
             ds.putAnnotation(data.id, data.annotation(), function(d){});
-
         }
 
         // get posts
         ds.getPost(params.args().postId,
             function(data) {
-
  
                 for(i = 0; i < data.length; i++)
                 {

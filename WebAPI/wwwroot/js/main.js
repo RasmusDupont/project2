@@ -69,7 +69,16 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
         //clicking the search button
         var clickSearch = function(data, event){
             searchField(document.getElementById("id_search").value);
-            changePage("searchresult", {searchString: searchField()});
+            if(searchField() === "")
+            {
+                alert("Searchfield is empty");
+            }
+            else
+            {
+                ds.saveSearch(searchField(), function(d){});
+                changePage("searchresult", {searchString: searchField()});
+            }
+            
         }
 
         //when user click a search in search histoory
@@ -80,6 +89,8 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
         //when user click a post in a search result
         var clickSearchResult = function(data, event){
+
+            ds.putPostViewCount(data.id,function(d){});
             changePage("QA", {postId: data.id})
         }
 

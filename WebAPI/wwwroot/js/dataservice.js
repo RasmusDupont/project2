@@ -57,7 +57,7 @@
 
     function putPostViewCount(id, callback){
 
-        sts.putPostViewCount(id, baseUr, callback);
+        sts.putPostViewCount(id, baseUrl, callback);
     }
 
     function putTagSearchCount(tag, callback){
