@@ -23,7 +23,7 @@
 <!--search history-->
 
 <ul class="list-group" data-bind="foreach: result">
-    <li class="list-group-item" data-bind="click: $parent.chooseSearch">
+    <li class="list-group-item" data-bind="click: $root.clickHistorySearch">
         <div data-bind="html:searchString"></div>
         <span class="createdDate" data-bind="html:searchDate"></span>
     </li>

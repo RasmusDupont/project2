@@ -7,10 +7,6 @@
         var result = ko.observableArray();
         var next = ko.observable();
         var prev = ko.observable();
-        var chooseSearch = function(data, event){
-            
-            alert("go to: " + data.searchString);
-        }
         var prevPage = function(data,evnt){
             loadViewModel(page-1, pageSize);
         }
@@ -57,7 +53,6 @@
         return {
             
             result,
-            chooseSearch,
             prev,
             next,
             prevPage,

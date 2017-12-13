@@ -40,23 +40,57 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
-        var main = ko.observable("QA");
+        var main = ko.observable("searchhistory");
+        var componentParams = ko.observable();
         var searchField = ko.observable();
+
+        //use when chaging main component
+        var changePage = function(page, paramList){
+
+            if(main() === page)
+            {
+                //reload component
+                main.valueHasMutated();
+            }
+            else
+            {
+                //change component
+                main(page);
+            }
+            
+            componentParams(paramList);
+        }
+        //clicking link in navigation bar
         var clickNav = function(data, event){
             
-            //change page
-            main(event.target.id);
+            componentName = event.target.id;
+            changePage(componentName);
         }
+        //clicking the search button
         var clickSearch = function(data, event){
             searchField(document.getElementById("id_search").value);
-            main("searchresult");
+            changePage("searchresult", {searchString: searchField()});
+        }
+
+        //when user click a search in search histoory
+        var clickHistorySearch = function(data, event){
+
+            changePage("searchresult", {searchString: data.searchString});
+        }
+
+        //when user click a post in a search result
+        var clickSearchResult = function(data, event){
+            changePage("QA", {postId: data.id})
         }
 
         return {
             main,
-            searchField,
             clickNav,
-            clickSearch
+            clickSearch,
+            changePage,
+            clickHistorySearch,
+            clickSearchResult,
+            componentParams
         };
 
     })();

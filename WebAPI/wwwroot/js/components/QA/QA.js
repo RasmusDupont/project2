@@ -24,7 +24,7 @@
         }
 
         // get posts
-        ds.getPost(427217,
+        ds.getPost(params.args().postId,
             function(data) {
 
  

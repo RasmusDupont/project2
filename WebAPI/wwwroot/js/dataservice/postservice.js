@@ -62,7 +62,7 @@
     function searchPosts(search, page, pageSize, baseURL, callback){
 
         $.ajax({
-            url: baseURL + "/api/post/search/" + search + "/" + page + "/" + pageSize,
+            url: baseURL + "/api/post/search/" + encodeURIComponent(search) + "/" + page + "/" + pageSize,
             type: "GET",
             dataType: "json",
             success: function(data) {

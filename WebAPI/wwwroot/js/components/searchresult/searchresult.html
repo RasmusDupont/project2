@@ -17,7 +17,7 @@
 
 <!--searchresult-->
 <ul class="list-group" data-bind="foreach: result">
-        <li class="list-group-item" data-bind="click: $parent.choosePost">
+        <li class="list-group-item" data-bind="click: $root.clickSearchResult">
             <div data-bind="html:title"></div>
             <span class="createdDate" data-bind="html:createDate"></span>
         </li>

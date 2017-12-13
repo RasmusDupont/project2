@@ -2,17 +2,14 @@ define (['knockout','dataservice'], function(ko, ds){
     
         return function (params) {
 
-            console.log(params);
-            var searchString = params.searchString;
+            console.log(params.args());
+            var searchString = params.args().searchString;
             var page;
             var pageSize;
             var result = ko.observableArray();
             var next = ko.observable();
             var prev = ko.observable();
-            var choosePost = function(data, event){
-                
-                alert("go to: " + data.id);
-            }
+
             var prevPage = function(data,evnt){
                 loadViewModel(searchString, page-1, pageSize);
             }
@@ -55,7 +52,6 @@ define (['knockout','dataservice'], function(ko, ds){
 
             return {
                 result,
-                choosePost,
                 prev,
                 next,
                 prevPage,
