@@ -4,6 +4,9 @@
 
         var title = ko.observableArray();
 
+        /**
+         * MOST VIEWED POSTS IS USED AS A TEMPORARY EXAMPLE *
+         */
         var graphObjects = [];
 
         ds.getMostViewedPosts(15, function(data) {
@@ -19,11 +22,10 @@
             }
         });
 
-        
         google.charts.load('current', { packages: ['corechart', 'bar'] });
-        google.charts.setOnLoadCallback(drawBasic);
+        google.charts.setOnLoadCallback(drawMostViewedPosts);
 
-        function drawBasic() {
+        function drawMostViewedPosts() {
             graphObjects.unshift(['Post','Views']);
             var data = google.visualization.arrayToDataTable(graphObjects);
 
