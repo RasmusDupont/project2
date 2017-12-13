@@ -3,10 +3,14 @@
     shim: {
       bootstrap: {
         deps: ['jquery'],
-        exports: 'Bootstrap'
-      }  
+        exports: 'Bootstrap'        
+        },
+      jqcloud: {
+          deps: ['jquery']
+      }
     },
     paths: {
+        jqcloud: '../lib/jqcloud2/dist/jqcloud.min',
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/dist/knockout",
         bootstrap: "../lib/bootstrap/dist/js/bootstrap",
@@ -48,8 +52,22 @@ require(['knockout'], function (ko) {
             template: { require: "text!components/SearchHistory/SearchHistory.html" }
         });
 });
+//require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
+//    ko.bindingHandlers.cloud = {
+//        init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+//            // This will be called when the binding is first applied to an element
+//            // Set up any initial state, event handlers, etc. here
+//            var words = allBindings.get('cloud').words;
+//            if (words && ko.isObservable(words)) {
+//                words.subscribe(function () {
+//                    $(element).jQCloud('update', ko.unwrap(words));
+//                });
+//            }
+//        }
+//    }
+//});
 
-require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
+require(['knockout', 'bootstrap', 'dataservice', 'jqcloud2'], (ko, bs, ds, cl) => {
 
     var vm = (function () {
 
