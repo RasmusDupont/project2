@@ -142,30 +142,12 @@ namespace WebAPI.Repositories
                 return null;
             }
         }
-        public List<RankedWordsByFrequencyDTO> GetWordsFrequencyInPostSearch(string searchString)
+        public List<Words> GetWordsFrequencyInPostSearch(string searchString)
         {
-            MySqlConnection conn = (MySqlConnection)db.Database.GetDbConnection();
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = conn;
 
-            cmd.Parameters.Add("@1", DbType.String);
-            cmd.Parameters["@1"].Value = searchString;
 
-            cmd.CommandText = "call rankWordsByFrequency(@1)";
+            List<Words> wordList = db.words.FromSql("call rankWordsByFrequency({0})", searchString).ToList();
 
-            var reader = cmd.ExecuteReader();
-
-            List<RankedWordsByFrequencyDTO> wordList = new List<RankedWordsByFrequencyDTO>();
-            while (reader.Read())
-            {
-                wordList.Add(new RankedWordsByFrequencyDTO
-                {
-                    Word = reader.GetString(0),
-                    Frequency = reader.GetInt32(1)
-                });
-            }
-            conn.Close();
             return wordList;
 
 

@@ -15,6 +15,6 @@ namespace WebAPI.Interfaces
         bool UpdateAnnotation(int id, string annotation);
         List<Post> GetPostsBySearchString(string searchString, int page, int pageSize);
         int GetPostCountBySearchString(string searchString);
-        List<RankedWordsByFrequencyDTO> GetWordsFrequencyInPostSearch(string searchString);
+        List<Words> GetWordsFrequencyInPostSearch(string searchString);
     }
 }

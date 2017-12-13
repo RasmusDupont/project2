@@ -125,7 +125,7 @@ namespace WebAPI.Controllers
         [HttpGet("search/words/{substring}")]
         public IActionResult getSearchedWordsByFrequency(string substring)
         {
-            List<RankedWordsByFrequencyDTO> result = _dataService.PostRepository.GetWordsFrequencyInPostSearch(substring);
+            List<Words> result = _dataService.PostRepository.GetWordsFrequencyInPostSearch(substring);
             return Ok(result);
         }
 
