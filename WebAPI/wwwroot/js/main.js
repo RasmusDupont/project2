@@ -3,10 +3,14 @@
     shim: {
       bootstrap: {
         deps: ['jquery'],
-        exports: 'Bootstrap'
-      }  
+        exports: 'Bootstrap'        
+        },
+      jqcloud: {
+          deps: ['jquery']
+      }
     },
     paths: {
+        jqcloud: '../lib/jqcloud2/dist/jqcloud.min',
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/dist/knockout",
         bootstrap: "../lib/bootstrap/dist/js/bootstrap",
@@ -32,14 +36,53 @@ require(['knockout'], function (ko) {
     {
         viewModel: { require: "components/SearchHistory/SearchHistory" },
         template: { require: "text!components/SearchHistory/SearchHistory.html" }
-    });
+        });
+    ko.components.register("wordcloud",
+        {
+            viewModel: { require: "components/wordcloud/wordcloud" },
+            template: { require: "text!components/wordcloud/wordcloud.html" }
+        });
 
 });
 
+<<<<<<< HEAD
+=======
+require(['knockout'], function (ko) {
+    ko.components.register("SearchHistory",
+        {
+            viewModel: { require: "components/SearchHistory/SearchHistory" },
+            template: { require: "text!components/SearchHistory/SearchHistory.html" }
+        });
+});
+
+require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
+    ko.bindingHandlers.cloud = {
+        init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+            // This will be called when the binding is first applied to an element
+            // Set up any initial state, event handlers, etc. here
+            var words = allBindings.get('cloud').words;
+            if(words && ko.isObservable(words)) {
+                words.subscribe(function() {
+                    $(element).jQCloud('update', ko.unwrap(words));
+                });
+            }
+        },
+        update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+            // This will be called once when the binding is first applied to an element,
+            // and again whenever any observables/computeds that are accessed change
+            // Update the DOM element based on the supplied values here.
+            var words = ko.unwrap(allBindings.get('cloud').words) || [];
+            $(element).jQCloud(words);
+        }
+    };
+});
+
+>>>>>>> wordcloud
 require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
+<<<<<<< HEAD
         var main = ko.observable("searchhistory");
         var componentParams = ko.observable();
         var searchField = ko.observable();
@@ -93,6 +136,13 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
             ds.putPostViewCount(data.id,function(d){});
             changePage("QA", {postId: data.id})
         }
+=======
+        var out = ko.observable();
+        var p = ko.observableArray();
+        var QA = ko.observable("wordcloud");
+
+
+>>>>>>> wordcloud
 
         return {
             main,
@@ -106,6 +156,17 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     })();
 
+<<<<<<< HEAD
+=======
+    console.log("QA component: " + ko.components.isRegistered('wordcloud'));
+
+    ds.putTagSearchCount("sql",
+        function(data) {
+
+            vm.out(JSON.stringify(data));
+            console.log(vm.out());
+        });
+>>>>>>> wordcloud
 
 
     ko.applyBindings(vm);

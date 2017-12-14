@@ -16,6 +16,7 @@ namespace WebAPI
         public DbSet<Tag> Tag { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<PostTag> PostTag { get; set; }
+        public DbSet<Words> words { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
