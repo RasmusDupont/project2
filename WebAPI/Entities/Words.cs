@@ -9,8 +9,8 @@ namespace WebAPI.Entities
     {
         [Key]
         [Column("lemma")]
-        public string word { get; set; }
+        public string text { get; set; }
         [Column("count(lemma)")]
-        public int count { get; set; }
+        public int weight { get; set; }
     }
 }
