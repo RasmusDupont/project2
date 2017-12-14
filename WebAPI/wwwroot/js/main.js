@@ -45,16 +45,6 @@ require(['knockout'], function (ko) {
 
 });
 
-<<<<<<< HEAD
-=======
-require(['knockout'], function (ko) {
-    ko.components.register("SearchHistory",
-        {
-            viewModel: { require: "components/SearchHistory/SearchHistory" },
-            template: { require: "text!components/SearchHistory/SearchHistory.html" }
-        });
-});
-
 require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
     ko.bindingHandlers.cloud = {
         init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -77,12 +67,10 @@ require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
     };
 });
 
->>>>>>> wordcloud
 require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
-<<<<<<< HEAD
         var main = ko.observable("searchhistory");
         var componentParams = ko.observable();
         var searchField = ko.observable();
@@ -136,13 +124,6 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
             ds.putPostViewCount(data.id,function(d){});
             changePage("QA", {postId: data.id})
         }
-=======
-        var out = ko.observable();
-        var p = ko.observableArray();
-        var QA = ko.observable("wordcloud");
-
-
->>>>>>> wordcloud
 
         return {
             main,
@@ -155,19 +136,6 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
         };
 
     })();
-
-<<<<<<< HEAD
-=======
-    console.log("QA component: " + ko.components.isRegistered('wordcloud'));
-
-    ds.putTagSearchCount("sql",
-        function(data) {
-
-            vm.out(JSON.stringify(data));
-            console.log(vm.out());
-        });
->>>>>>> wordcloud
-
 
     ko.applyBindings(vm);
 

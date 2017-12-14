@@ -145,7 +145,7 @@ namespace WebAPI.Repositories
         public List<Words> GetWordsFrequencyInPostSearch(string searchString)
         {
 
-
+            searchString = PrepareSearchString(searchString);
             List<Words> wordList = db.words.FromSql("call rankWordsByFrequency({0})", searchString).ToList();
 
             return wordList;

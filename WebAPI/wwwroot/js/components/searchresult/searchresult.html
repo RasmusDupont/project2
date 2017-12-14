@@ -23,5 +23,9 @@
         </li>
 </ul>
 
+<div data-bind="if: subComponent() != false">
+        <div data-bind="component: { name: subComponent, params: {words: words} }"></div>
+</div>
+
 
 

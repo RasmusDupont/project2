@@ -76,6 +76,8 @@
 
     function getSearchedWords(search, baseURL, callback){
 
+        console.log(search);
+
          $.ajax({
             url: baseURL + "/api/post/search/words/" + search,
             type: "GET",

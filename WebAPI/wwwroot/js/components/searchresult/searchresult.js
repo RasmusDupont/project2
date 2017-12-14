@@ -2,8 +2,9 @@ define (['knockout','dataservice'], function(ko, ds){
     
         return function (params) {
 
-            console.log(params.args());
-            var searchString = params.args().searchString;
+            var subComponent = ko.observable(false);
+            var searchString = ko.observable(params.args().searchString);
+            var words = ko.observableArray();
             var page;
             var pageSize;
             var result = ko.observableArray();
@@ -11,10 +12,10 @@ define (['knockout','dataservice'], function(ko, ds){
             var prev = ko.observable();
 
             var prevPage = function(data,evnt){
-                loadViewModel(searchString, page-1, pageSize);
+                loadViewModel(searchString(), page-1, pageSize);
             }
             var nextPage = function(data, event){
-                loadViewModel(searchString, page+1, pageSize);
+                loadViewModel(searchString(), page+1, pageSize);
             }
             var loadViewModel = function(search, p, pSize){
 
@@ -39,23 +40,34 @@ define (['knockout','dataservice'], function(ko, ds){
                     page = p;
                     pageSize = pSize;
                     
-                    searchString = search;
+                    searchString(search);
 
                     next(data.nextLink);
                     prev(data.prevLink);
-                    console.log(data);
-                })
+                    
+                    console.log(searchString());
+                    ds.getSearchedWords(searchString(), function (data) {
+                        
+                        //load subcomponent
+                        words(data);
+                        console.log(data);
+                        subComponent("wordcloud");
+                    });   
+                    
 
+                })
             }
             
-            loadViewModel(searchString, 0, 10);
+            loadViewModel(searchString(), 0, 10);
 
             return {
                 result,
                 prev,
                 next,
                 prevPage,
-                nextPage
+                nextPage,
+                subComponent,
+                words
             };
 
         }
