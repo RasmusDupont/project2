@@ -168,6 +168,13 @@ namespace WebAPI.Repositories
             */
         }
 
+        public List<TermNetworkPart> GetTermNetwork(string term)
+        {
+            List<TermNetworkPart> termNetwork = db.TermNetworkPart.FromSql("call term_network({0})", term).ToList();
+
+            return termNetwork;
+        }
+
         private List<Tag> getRelatedTags (Post post)
         {
             post.Tags = db.Tag

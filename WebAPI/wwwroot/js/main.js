@@ -46,10 +46,15 @@ require(['knockout'], function (ko) {
             viewModel: { require: "components/wordcloud/wordcloud" },
             template: { require: "text!components/wordcloud/wordcloud.html" }
         });
-        ko.components.register("statistics",
+    ko.components.register("statistics",
         {
             viewModel: { require: "components/statistics/statistics" },
             template: { require: "text!components/statistics/statistics.html" }
+        });
+    ko.components.register("termnetwork",
+        {
+            viewModel: { require: "components/termnetwork/termnetwork" },
+            template: { require: "text!components/termnetwork/termnetwork.html" }
         });
 
 });
@@ -76,13 +81,18 @@ require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
     };
 });
 
-require(['knockout', 'bootstrap', 'dataservice', 'charts'], (ko, bs, ds) => {
+require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
 
     var vm = (function () {
 
         var main = ko.observable("searchhistory");
         var componentParams = ko.observable();
         var searchField = ko.observable();
+        var navBar = ko.observableArray([
+            {id: "searchhistory", btnText: "Search History"}, 
+            {id: "statistics", btnText: "Statistics"},
+            {id: "termnetwork", btnText: "Term Network"}
+        ]);
 
         //use when chaging main component
         var changePage = function(page, paramList){
@@ -103,12 +113,11 @@ require(['knockout', 'bootstrap', 'dataservice', 'charts'], (ko, bs, ds) => {
         //clicking link in navigation bar
         var clickNav = function(data, event){
             
-            componentName = event.target.id;
-            changePage(componentName);
+            changePage(data.id);
         }
         //clicking the search button
         var clickSearch = function(data, event){
-            searchField(document.getElementById("id_search").value);
+
             if(searchField() === "")
             {
                 alert("Searchfield is empty");
@@ -132,9 +141,12 @@ require(['knockout', 'bootstrap', 'dataservice', 'charts'], (ko, bs, ds) => {
         var clickSearchResult = function(data, event){
 
             ds.putPostViewCount(data.id,function(d){});
-            changePage("QA", {postId: data.id})
+            changePage("QA", {postId: data.id});
         }
-        
+
+
+
+
 
         return {
             main,
@@ -143,7 +155,9 @@ require(['knockout', 'bootstrap', 'dataservice', 'charts'], (ko, bs, ds) => {
             changePage,
             clickHistorySearch,
             clickSearchResult,
-            componentParams
+            componentParams,
+            navBar,
+            searchField
         };
 
     })();

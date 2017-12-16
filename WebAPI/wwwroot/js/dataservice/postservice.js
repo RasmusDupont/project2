@@ -76,15 +76,27 @@
 
     function getSearchedWords(search, baseURL, callback){
 
-        console.log(search);
-
          $.ajax({
-            url: baseURL + "/api/post/search/words/" + search,
+            url: baseURL + "/api/post/search/words/" + encodeURIComponent(search),
             type: "GET",
             dataType: "json",
             success: function(data) {
 
                 console.log("get searched words");
+                callback(data);
+            }
+        });
+    }
+
+    function getTermNetwork(search, baseURL, callback) {
+
+        $.ajax({
+            url: baseURL + "/api/post/search/termnetwork/" + encodeURIComponent(search),
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+
+                console.log("get term network");
                 callback(data);
             }
         });
@@ -96,7 +108,8 @@
         getAnnotation,
         putAnnotation,
         searchPosts,
-        getSearchedWords
+        getSearchedWords,
+        getTermNetwork
     }
    
 });

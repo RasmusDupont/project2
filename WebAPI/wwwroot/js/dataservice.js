@@ -34,6 +34,10 @@
 
         ps.getSearchedWords(search, baseUrl, callback);
     }
+    function getTermNetwork(search, callback){
+        
+        ps.getTermNetwork(search, baseUrl, callback);
+    }
 
     function saveSearch(searchString, callback){
 
@@ -73,6 +77,7 @@
         putAnnotation,
         searchPosts,
         getSearchedWords,
+        getTermNetwork,
         saveSearch,
         getSearchHistory,
         getMostViewedPosts,

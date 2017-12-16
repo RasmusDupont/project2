@@ -16,5 +16,6 @@ namespace WebAPI.Interfaces
         List<Post> GetPostsBySearchString(string searchString, int page, int pageSize);
         int GetPostCountBySearchString(string searchString);
         List<Words> GetWordsFrequencyInPostSearch(string searchString);
+        List<TermNetworkPart> GetTermNetwork(string term);
     }
 }

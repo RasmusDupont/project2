@@ -129,6 +129,19 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("search/termnetwork/{substring}")]
+        public IActionResult getTermNetwork(string substring)
+        {
+            List<TermNetworkPart> termNetwork = _dataService.PostRepository.GetTermNetwork(substring);
+            string result = "";
+            foreach (TermNetworkPart termNetworkPart in termNetwork)
+            {
+                result += termNetworkPart.part;
+            }
+
+            return Ok(result);
+        }
+
         private string Link(string route, string substring, int page, int pageSize, int pageInc = 0, Func<bool> f = null)
         {
             if (f == null) return string.Format(route,substring, page, pageSize);

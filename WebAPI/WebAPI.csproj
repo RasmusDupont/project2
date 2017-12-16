@@ -10,6 +10,7 @@
     <Content Remove="wwwroot\images\**" />
     <EmbeddedResource Remove="wwwroot\images\**" />
     <None Remove="wwwroot\images\**" />
+    <Folder Include="wwwroot\js\components\termnetwork\" />
   </ItemGroup>
 
   <ItemGroup>

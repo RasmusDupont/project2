@@ -26,13 +26,13 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a id="searchhistory" href="#" data-bind="click: clickNav">Search History</a></li>
-                    <li><a id="statistics" href="#" data-bind="click: clickNav">Statistics</a></li>
+                <ul class="nav navbar-nav" data-bind="foreach: navBar">
+                    
+                    <li><a href="#" data-bind="click: $parent.clickNav, html: btnText, attr: {id: id}"></a></li>
                 </ul>
                 <div class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input  id="id_search" type="text" class="form-control" placeholder="Search for posts">
+                        <input  id="id_search" type="text" class="form-control" placeholder="Search for posts" data-bind="value: searchField">
                     </div>
                     <button class="btn btn-default" data-bind="click: clickSearch">Search</button>
                 </div>
