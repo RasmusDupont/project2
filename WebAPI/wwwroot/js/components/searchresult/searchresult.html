@@ -16,16 +16,18 @@
 </span>
 
 <!--searchresult-->
-<ul class="list-group" data-bind="foreach: result">
-        <li class="list-group-item" data-bind="click: $root.clickSearchResult">
-            <div data-bind="html:title"></div>
-            <span class="createdDate" data-bind="html:createDate"></span>
-        </li>
-</ul>
 
-<div data-bind="if: subComponent() != false">
-        <div data-bind="component: { name: subComponent, params: {words: words} }"></div>
+<div class="row">
+        <ul class="col-sm-8" class="list-group" data-bind="foreach: result">
+                <li class="list-group-item" data-bind="click: $root.clickSearchResult">
+                <div data-bind="html:title"></div>
+                <span class="createdDate" data-bind="html:createDate"></span>
+                </li>
+        </ul>
+
+        <div class="col-sm-4" data-bind="if: subComponent() != false">
+                <div data-bind="component: { name: subComponent, params: {words: words} }"></div>
+        </div>
 </div>
-
 
 
