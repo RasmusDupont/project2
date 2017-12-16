@@ -1,6 +1,7 @@
 ﻿require.config({
     baseUrl: "js",
     shim: {
+
       bootstrap: {
         deps: ['jquery'],
         exports: 'Bootstrap'        
@@ -8,15 +9,18 @@
       jqcloud: {
           deps: ['jquery']
       }
+
     },
     paths: {
         jqcloud: '../lib/jqcloud2/dist/jqcloud.min',
         jquery: "../lib/jquery/dist/jquery",
         knockout: "../lib/knockout/dist/knockout",
         bootstrap: "../lib/bootstrap/dist/js/bootstrap",
+        charts: "../lib/charts/loader",
         text: "../lib/text/text"
     }
 });
+
 
 
 require(['knockout'], function (ko) {
@@ -41,6 +45,11 @@ require(['knockout'], function (ko) {
         {
             viewModel: { require: "components/wordcloud/wordcloud" },
             template: { require: "text!components/wordcloud/wordcloud.html" }
+        });
+        ko.components.register("statistics",
+        {
+            viewModel: { require: "components/statistics/statistics" },
+            template: { require: "text!components/statistics/statistics.html" }
         });
 
 });
@@ -67,7 +76,7 @@ require(['knockout', 'jquery', 'jqcloud'], function (ko, $) {
     };
 });
 
-require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
+require(['knockout', 'bootstrap', 'dataservice', 'charts'], (ko, bs, ds) => {
 
     var vm = (function () {
 
@@ -115,6 +124,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
         //when user click a search in search histoory
         var clickHistorySearch = function(data, event){
 
+
             changePage("searchresult", {searchString: data.searchString});
         }
 
@@ -124,6 +134,7 @@ require(['knockout', 'bootstrap', 'dataservice'], (ko, bs, ds) => {
             ds.putPostViewCount(data.id,function(d){});
             changePage("QA", {postId: data.id})
         }
+        
 
         return {
             main,
