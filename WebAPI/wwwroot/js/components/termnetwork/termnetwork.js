@@ -6,19 +6,13 @@
 
             ds.getTermNetwork("mongodb", function (data) {
                 var graph = data["responseText"];
-
-                var width = 960,
-                    height = 500;
-
+                var width = 960, height = 500;
                 var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
-
                 var force = d3.layout.force()
                     .gravity(0.05)
                     .distance(100)
                     .charge(-200)
                     .size([width, height]);
-
-                var color = d3.scale.category20c();
 
                 (function () {
                     force
@@ -37,9 +31,10 @@
                         .enter().append("g")
                         .attr("class", "node")
                         .call(force.drag);
+
                     node.append("circle")
-                        .attr("r", function (d) { return 5; })
-                        .style("fill", "red")
+                        .attr("r", function(d) { return 5; })
+                        .style("fill", "red");
 
                     node.append("text")
                         .attr("dx", function (d) { return -(d.name.length * 3) })
