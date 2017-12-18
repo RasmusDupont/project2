@@ -95,8 +95,15 @@
             type: "GET",
             dataType: "json",
             success: function(data) {
-
+                alert("Local success callback.");
                 console.log("get term network");
+                callback(data);
+            },
+            error: function (jqXHR, status, err) {
+                alert("Local error callback. Status " + status + ": " + err);
+            },
+            complete: function (data) {
+                alert("Local completion callback.");
                 callback(data);
             }
         });

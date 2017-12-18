@@ -2,12 +2,14 @@
     
         return function (params) {
 
-            
-            
-            ds.getTermNetwork("sql", function(data){
+            ko.observableArray();
+
+            var x = ds.getTermNetwork("mongodb", function(data){
                 alert("help me!");
                 console.log(data);
-
+                return data;
             });
+
+            console.log(x);
         }
 });
