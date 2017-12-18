@@ -5,6 +5,8 @@
             ko.observableArray();
 
             ds.getTermNetwork("mongodb", function (data) {
+                console.log(data["responseText"]);
+
                 var graph = data["responseText"];
                 var width = 960, height = 500;
                 var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
@@ -49,9 +51,6 @@
                         node.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; });
                     });
                 })();
-
-                console.log(data["responseText"]);
-                return data;
             });
         }
 });
