@@ -3,9 +3,8 @@
     shim: {
 
       bootstrap: {
-        deps: ['jquery'],
-        exports: 'Bootstrap'        
-        },
+        deps: ['jquery'],     
+      },
       jqcloud: {
           deps: ['jquery']
       }
@@ -17,11 +16,10 @@
         knockout: "../lib/knockout/dist/knockout",
         bootstrap: "../lib/bootstrap/dist/js/bootstrap",
         charts: "../lib/charts/loader",
+        d3js: "../lib/d3js/d3.min",
         text: "../lib/text/text"
     }
 });
-
-
 
 require(['knockout'], function (ko) {
 

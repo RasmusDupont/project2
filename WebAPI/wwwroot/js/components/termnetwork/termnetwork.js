@@ -1,4 +1,4 @@
-﻿define (['knockout','dataservice'], function(ko, ds){
+﻿define (['knockout','dataservice', 'd3js'], function(ko, ds){
     
         return function (params) {
 
