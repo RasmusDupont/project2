@@ -7,7 +7,6 @@ namespace WebAPI.Entities
     public class TermNetworkPart
     {
         [Key]
-        [Column("var graph = ")]
         public string part
         {
             get;

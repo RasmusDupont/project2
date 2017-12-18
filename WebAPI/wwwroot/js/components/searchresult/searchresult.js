@@ -52,7 +52,8 @@ define (['knockout','dataservice'], function(ko, ds){
                         words(data);
                         console.log(data);
                         subComponent("wordcloud");
-                })
+                    });
+                }
             }
             
             loadViewModel(searchString(), 0, 10);

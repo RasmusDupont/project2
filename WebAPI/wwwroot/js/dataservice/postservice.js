@@ -94,9 +94,13 @@
             url: baseURL + "/api/post/search/termnetwork/" + encodeURIComponent(search),
             type: "GET",
             dataType: "json",
-            complete: function (data) {
-                alert(data);
+            success: function(data) {
+
+                console.log("get searched words");
                 callback(data);
+            },
+            error: function (jqXHR, status, err) {
+                console.log(err);
             }
         });
     }

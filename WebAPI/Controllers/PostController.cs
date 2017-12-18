@@ -139,6 +139,7 @@ namespace WebAPI.Controllers
                 result += termNetworkPart.part;
             }
 
+            result = result.Replace(",]","]");
             return Ok(result);
         }
 
