@@ -13,10 +13,10 @@ define (['knockout','dataservice'], function(ko, ds){
 
             var prevPage = function(data,evnt){
                 loadViewModel(searchString(), page-1, pageSize);
-            }
+            };
             var nextPage = function(data, event){
                 loadViewModel(searchString(), page+1, pageSize);
-            }
+            };
             var loadViewModel = function(search, p, pSize){
 
                 ds.searchPosts(search, p, pSize, function(data){
@@ -53,7 +53,7 @@ define (['knockout','dataservice'], function(ko, ds){
                         console.log(data);
                         subComponent("wordcloud");
                     });
-                }
+                })
             }
             
             loadViewModel(searchString(), 0, 10);
