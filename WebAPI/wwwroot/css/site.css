@@ -50,4 +50,17 @@ input[type="checkbox"].input-validation-error {
     font: 14px sans-serif;
 }
 
+.navbar-default .navbar-nav > li > a:hover {
+    color: #b94a48;
+}
+
+.navbar-default .navbar-nav > li {
+    color: #371818;
+}
+
+.navbar-default, .panel-footer {
+    border-color: #b94a48;
+    background: #b1a7a7;
+}
+
 
