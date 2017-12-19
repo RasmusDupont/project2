@@ -5,6 +5,7 @@ using System.Text;
 
 namespace WebAPI.Entities
 {
+    [Table("tag")]
     public class Tag
     {
         public int Id { get; set; }

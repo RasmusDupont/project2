@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Entities
 {
+    [Table("linkpost")]
     public class Linkpost
     {
         [Column("fk_link_to_post")]

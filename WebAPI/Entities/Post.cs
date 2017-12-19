@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
 namespace WebAPI.Entities
 {
+    [Table("post")]
     public class Post
     {
         public int Id { get; set; }

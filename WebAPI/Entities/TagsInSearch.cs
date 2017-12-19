@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Entities
 {
+    [Table("tagsinsearch")]
     public class TagsInSearch
     {
         [Column("fk_search_id")]

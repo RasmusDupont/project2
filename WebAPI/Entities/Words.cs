@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 namespace WebAPI.Entities
 {
+    [Table("words")]
     public class Words
     {
         [Key]

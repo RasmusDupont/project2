@@ -47,7 +47,7 @@ input[type="checkbox"].input-validation-error {
 
 .node text {
     pointer-events: none;
-    font: 14px sans-serif;
+    font: 14px sans-serif; 
 }
 
 .navbar-default .navbar-nav > li > a:hover {

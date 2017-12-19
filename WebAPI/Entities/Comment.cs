@@ -5,6 +5,7 @@ using System.Text;
 
 namespace WebAPI.Entities
 {
+    [Table("comment")]
     public class Comment
     {
         public int Id { get; set; }

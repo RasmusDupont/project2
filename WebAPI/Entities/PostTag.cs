@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Entities
 {
+    [Table("posttag")]
     public class PostTag
     {
         [Column("fk_tag_id")]

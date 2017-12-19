@@ -5,6 +5,7 @@ using System.Text;
 
 namespace WebAPI.Entities
 {
+    [Table("search")]
     public class Search
     {
         public int Id { get; set; }
