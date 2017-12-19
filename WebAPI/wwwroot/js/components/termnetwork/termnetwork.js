@@ -30,6 +30,8 @@
                         .distance(100)
                         .charge(-200)
                         .size([width, height]);
+
+                    var color = d3.scale.category20c();
     
                     (function () {
                         force
