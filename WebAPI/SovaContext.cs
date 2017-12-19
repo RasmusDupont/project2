@@ -22,7 +22,8 @@ namespace WebAPI
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseMySql("server=localhost;database=sovadb;uid=root;pwd=root");
+            //optionsBuilder.UseMySql("server=localhost;database=sovadb;uid=root;pwd=root");
+            optionsBuilder.UseMySql("server=wt-220.ruc.dk;database=raw6;uid=raw6;pwd=raw6");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
